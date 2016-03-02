@@ -26,6 +26,11 @@ class User extends BaseUser
     protected $ads;
 
     /**
+     * @ORM\OneToMany( targetEntity = "Comment", mappedBy = "commentOwner" )
+     */
+    protected $userComments;
+
+    /**
      * Add ads
      *
      * @param \BoardBundle\Entity\Ad $ads
@@ -56,5 +61,38 @@ class User extends BaseUser
     public function getAds()
     {
         return $this->ads;
+    }
+
+    /**
+     * Add userComments
+     *
+     * @param \BoardBundle\Entity\Comment $userComments
+     * @return User
+     */
+    public function addUserComment(\BoardBundle\Entity\Comment $userComments)
+    {
+        $this->userComments[] = $userComments;
+
+        return $this;
+    }
+
+    /**
+     * Remove userComments
+     *
+     * @param \BoardBundle\Entity\Comment $userComments
+     */
+    public function removeUserComment(\BoardBundle\Entity\Comment $userComments)
+    {
+        $this->userComments->removeElement($userComments);
+    }
+
+    /**
+     * Get userComments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserComments()
+    {
+        return $this->userComments;
     }
 }

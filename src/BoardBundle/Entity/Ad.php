@@ -61,7 +61,12 @@ class Ad
      * @ORM\JoinTable( name = "ad_category" )
      */
     private $categories;
-    
+
+    /**
+     * @ORM\OneToMany( targetEntity = "Comment", mappedBy = "itsAdd" )
+     */
+    protected $addComments;
+
     /**
      * Get id
      *
@@ -225,5 +230,38 @@ class Ad
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add addComments
+     *
+     * @param \BoardBundle\Entity\Comment $addComments
+     * @return Ad
+     */
+    public function addAddComment(\BoardBundle\Entity\Comment $addComments)
+    {
+        $this->addComments[] = $addComments;
+
+        return $this;
+    }
+
+    /**
+     * Remove addComments
+     *
+     * @param \BoardBundle\Entity\Comment $addComments
+     */
+    public function removeAddComment(\BoardBundle\Entity\Comment $addComments)
+    {
+        $this->addComments->removeElement($addComments);
+    }
+
+    /**
+     * Get addComments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddComments()
+    {
+        return $this->addComments;
     }
 }
