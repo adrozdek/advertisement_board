@@ -3,5 +3,13 @@
 {% block title %}BoardBundle:Category:allCategories{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Category:allCategories page</h1>
+    <h1>Kategorie</h1>
+
+    Dodaj nową: {{ render(controller('BoardBundle:Category:createCategory')) }}
+
+    {% for category in categories %}
+       <p> {{ category.name }} </p>
+    {% endfor %}
+
+
 {% endblock %}

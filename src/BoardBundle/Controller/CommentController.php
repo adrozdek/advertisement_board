@@ -55,6 +55,7 @@ class CommentController extends Controller
 
             $user = $this->getUser();
 
+            date_default_timezone_set("Europe/Warsaw");
             $date = date('Y-m-d H:i:s', time());
             $comment->setCommentDate(new \DateTime($date));
 

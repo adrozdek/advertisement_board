@@ -3,5 +3,12 @@
 {% block title %}BoardBundle:Category:showCategory{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Category:showCategory page</h1>
+    <h1>Kategoria: {{ category.name | upper }}</h1>
+
+    {% for ad in category.ads %}
+        {{ ad.title }}
+
+    {% endfor %}
+
+
 {% endblock %}

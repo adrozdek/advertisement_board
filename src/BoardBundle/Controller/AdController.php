@@ -81,8 +81,7 @@ class AdController extends Controller
             $ad->setOwner($user);
             $user->addAd($ad);
 
-            //@TODO: wrong time. -1h
-
+            date_default_timezone_set("Europe/Warsaw");
             $date = date('Y-m-d H:i:s', time());
             $ad->setCreationDate(new \DateTime($date));
 
@@ -96,7 +95,7 @@ class AdController extends Controller
 
             return $this->redirectToRoute('showAd', ['id' => $id]);
         } else {
-            return $this->redirectToRoute('showAllMyAds');
+            return $this->redirectToRoute('showAllMyActiveAds');
         }
     }
 
@@ -218,6 +217,7 @@ class AdController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ads = $repo->findAll();
+        //@TODO: po dacie dodania.
 
         return ['ads' => $ads];
     }
@@ -230,6 +230,7 @@ class AdController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
 
+        date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
 
@@ -248,6 +249,7 @@ class AdController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
 
+        date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
 
