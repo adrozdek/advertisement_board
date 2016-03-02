@@ -191,7 +191,7 @@ class AdController extends Controller
         $em->remove($ad);
         $em->flush();
 
-        return $this->redirectToRoute('showAllMyAds');
+        return $this->redirectToRoute('showAllMyActiveAds');
     }
 
 
@@ -203,8 +203,11 @@ class AdController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
+        //żeby komentarze były wyświetlane od najnowszych:
+        $repoComments = $this->getDoctrine()->getRepository('BoardBundle:Comment');
+        $comments = $repoComments->findByCommentDate($ad);
 
-        return ['ad' => $ad];
+        return ['ad' => $ad, 'comments' => $comments];
     }
 
     /**

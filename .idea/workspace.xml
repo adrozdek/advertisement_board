@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f1f3c78-27f5-45f5-95b6-f5b8fcf58551" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/allComments.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/showComment.html.twig" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Entity/AdRepository.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Entity/AdRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Entity/CategoryRepository.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Entity/CategoryRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Entity/CommentRepository.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Entity/CommentRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/myComments.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/myComments.html.twig" />
     </list>
     <ignored path="last_workshop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,43 +37,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Ad.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/Ad.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="257" column="0" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
               <folding>
                 <element signature="e#42#68#0#PHP" expanded="true" />
                 <element signature="e#3407#3423#1#PHP" expanded="true" />
                 <element signature="e#3878#3894#1#PHP" expanded="true" />
                 <element signature="e#5722#5738#1#PHP" expanded="true" />
-                <element signature="e#6351#6367#1#PHP" expanded="true" />
-                <element signature="e#6614#6630#1#PHP" expanded="true" />
-                <element signature="e#6925#6941#1#PHP" expanded="true" />
-                <element signature="e#7414#7430#1#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/AdRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="88" selection-start-line="28" selection-start-column="88" selection-end-line="28" selection-end-column="88" />
-              <folding>
-                <marker date="1456933073987" expanded="true" signature="395:508" placeholder="SELECT a FRO... BoardBundle" />
-                <marker date="1456933073987" expanded="true" signature="808:921" placeholder="SELECT a FRO... BoardBundle" />
+                <element signature="e#6357#6373#1#PHP" expanded="true" />
+                <element signature="e#6527#6548#1#PHP" expanded="true" />
+                <element signature="e#6847#6863#1#PHP" expanded="true" />
+                <element signature="e#7158#7174#1#PHP" expanded="true" />
+                <element signature="e#7647#7663#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <caret line="9" column="29" selection-start-line="8" selection-start-column="3" selection-end-line="9" selection-end-column="29" />
               <folding>
                 <element signature="e#12#28#0#Twig" expanded="true" />
                 <element signature="e#247#283#0#Twig" expanded="true" />
@@ -88,60 +70,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php">
+      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-              <folding>
-                <element signature="e#42#73#0#PHP" expanded="true" />
-                <element signature="e#1589#1605#1#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FirstController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.19884393">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myAds.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig">
+      <file leaf-file-name="CategoryRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/CategoryRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
-                <element signature="e#12#28#0#Twig" expanded="true" />
-                <element signature="e#271#307#0#Twig" expanded="true" />
+                <element signature="e#42#73#0#PHP" expanded="true" />
+                <element signature="e#1589#1605#1#PHP" expanded="true" />
+                <element signature="e#2370#2391#1#PHP" expanded="true" />
+                <element signature="e#2785#2806#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oldAds.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig">
+      <file leaf-file-name="CommentRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/CommentRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
-                <element signature="e#12#28#0#Twig" expanded="true" />
-                <element signature="e#266#302#0#Twig" expanded="true" />
+                <marker date="1456934898795" expanded="true" signature="392:475" placeholder="SELECT c FRO... BoardBundle" />
+                <marker date="1456934898795" expanded="true" signature="715:807" placeholder="SELECT c FRO... BoardBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <file leaf-file-name="FirstController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+              <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+              <folding>
+                <element signature="e#42#99#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myComments.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/myComments.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+              <folding>
+                <element signature="e#12#28#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mystyle.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/css/mystyle.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -151,7 +156,7 @@
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="86" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+              <caret line="26" column="54" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="54" />
               <folding>
                 <element signature="e#12#28#0#Twig" expanded="true" />
               </folding>
@@ -182,14 +187,11 @@
         <option value="$PROJECT_DIR$/web/css/mystyle.css" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Entity/Category.php" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/createAd.html.twig" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Entity/Comment.php" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/addComment.html.twig" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/confirmed.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Entity/Ad.php" />
@@ -198,7 +200,14 @@
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/myComments.html.twig" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Entity/CommentRepository.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Entity/CategoryRepository.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php" />
       </list>
     </option>
   </component>
@@ -562,7 +571,7 @@
     <frame x="49" y="0" width="1770" height="1025" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17719299" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19707602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -742,14 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/mystyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/Category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -762,14 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -822,27 +815,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/showComment.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/removeComment.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/allComments.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -914,27 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="86" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/AdRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="88" selection-start-line="28" selection-start-column="88" selection-end-line="28" selection-end-column="88" />
-          <folding>
-            <marker date="1456933073987" expanded="true" signature="395:508" placeholder="SELECT a FRO... BoardBundle" />
-            <marker date="1456933073987" expanded="true" signature="808:921" placeholder="SELECT a FRO... BoardBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -957,50 +909,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-            <element signature="e#247#283#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="257" column="0" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
-          <folding>
-            <element signature="e#42#68#0#PHP" expanded="true" />
-            <element signature="e#3407#3423#1#PHP" expanded="true" />
-            <element signature="e#3878#3894#1#PHP" expanded="true" />
-            <element signature="e#5722#5738#1#PHP" expanded="true" />
-            <element signature="e#6351#6367#1#PHP" expanded="true" />
-            <element signature="e#6614#6630#1#PHP" expanded="true" />
-            <element signature="e#6925#6941#1#PHP" expanded="true" />
-            <element signature="e#7414#7430#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <element signature="e#42#73#0#PHP" expanded="true" />
-            <element signature="e#1589#1605#1#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,10 +925,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/AdRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <marker date="1456933073987" expanded="true" signature="395:508" placeholder="SELECT a FRO... BoardBundle" />
+            <marker date="1456933073987" expanded="true" signature="808:921" placeholder="SELECT a FRO... BoardBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+          <folding>
+            <element signature="e#42#99#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="54" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="54" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="29" selection-start-line="8" selection-start-column="3" selection-end-line="9" selection-end-column="29" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+            <element signature="e#247#283#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/mystyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#68#0#PHP" expanded="true" />
+            <element signature="e#3407#3423#1#PHP" expanded="true" />
+            <element signature="e#3878#3894#1#PHP" expanded="true" />
+            <element signature="e#5722#5738#1#PHP" expanded="true" />
+            <element signature="e#6357#6373#1#PHP" expanded="true" />
+            <element signature="e#6527#6548#1#PHP" expanded="true" />
+            <element signature="e#6847#6863#1#PHP" expanded="true" />
+            <element signature="e#7158#7174#1#PHP" expanded="true" />
+            <element signature="e#7647#7663#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Comment/myComments.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/CommentRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <marker date="1456934898795" expanded="true" signature="392:475" placeholder="SELECT c FRO... BoardBundle" />
+            <marker date="1456934898795" expanded="true" signature="715:807" placeholder="SELECT c FRO... BoardBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CommentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#73#0#PHP" expanded="true" />
+            <element signature="e#1589#1605#1#PHP" expanded="true" />
+            <element signature="e#2370#2391#1#PHP" expanded="true" />
+            <element signature="e#2785#2806#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Entity/CategoryRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19884393">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
           <folding />
         </state>
       </provider>

@@ -75,40 +75,39 @@ class CommentController extends Controller
 
     }
 
+    //@TODO: ewentualna edycja komentarzy
+
     /**
      * @Route("/myComments")
      * @Template()
      */
     public function myCommentsAction()
     {
-        return [];
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Comment');
+        $comments = $repo->findCommentsByUser($this->getUser());
+        //@TODO: join żeby wiedzieć tylko komentarze do aktywnych ogłoszeń
+
+        return ['comments' => $comments];
     }
 
-    /**
-     * @Route("/showComment")
-     * @Template()
-     */
-    public function showCommentAction()
-    {
-        return [];
-    }
 
     /**
-     * @Route("/removeComment")
+     * @Route("/removeComment/{id}", name = "removeComment" )
      * @Template()
      */
-    public function removeCommentAction()
+    public function removeCommentAction($id)
     {
-        return [];
-    }
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Comment');
+        $comment = $repo->find($id);
 
-    /**
-     * @Route("/allComments")
-     * @Template()
-     */
-    public function allCommentsAction()
-    {
-        return [];
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($comment);
+        $em->flush();
+
+        //@TODO: redirect to previous watching page
+
+        return $this->redirectToRoute('showAllMyActiveAds');
+
     }
 
 }

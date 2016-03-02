@@ -3,5 +3,25 @@
 {% block title %}BoardBundle:Comment:myComments{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Comment:myComments page</h1>
+    <h1>Moje komentarze</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+            <tr class="no">
+                <td>Data</td>
+                <td>Ogłoszenie</td>
+                <td>Treść komentarza</td>
+            </tr>
+
+            {% for comment in comments %}
+                <tr>
+                    <td>{{ comment.commentDate | date('Y-m-d H:i:s') }}</td>
+                    <td><a href="{{ path("showAd", {'id': comment.itsAd.id }) }}">{{ comment.itsAd.title }}</a></td>
+                    <td>{{ comment.commentText }}</td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+
 {% endblock %}

@@ -20,11 +20,12 @@
     <hr>
     <h3>Komentarze: </h3>
 
-    {% for comment in ad.adComments %}
+    {% for comment in comments %}
         <p>
             <b>{{ comment.commentOwner.username | capitalize }}</b><br>
             {{ comment.commentText }}<br>
             {{ comment.commentDate|date('Y-m-d H:i:s') }}
+            <a href="{{ path('removeComment', { 'id': comment.id }) }}">Usuń</a>
         </p>
     {% endfor %}
 

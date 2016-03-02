@@ -12,4 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+    public function findByCommentDate(Ad $ad) {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT c FROM BoardBundle:Comment c WHERE c.itsAd = :ad ORDER BY c.commentDate DESC'
+        );
+        $query->setParameter('ad', $ad);
+
+        return $query->getResult();
+    }
+
+    public function findCommentsByUser(User $user) {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT c FROM BoardBundle:Comment c WHERE c.commentOwner = :user ORDER BY c.commentDate DESC'
+        )->setParameter('user', $user);
+
+        return $query->getResult();
+    }
 }
