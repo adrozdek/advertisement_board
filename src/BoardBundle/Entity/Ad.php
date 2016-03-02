@@ -63,9 +63,9 @@ class Ad
     private $categories;
 
     /**
-     * @ORM\OneToMany( targetEntity = "Comment", mappedBy = "itsAdd" )
+     * @ORM\OneToMany( targetEntity = "Comment", mappedBy = "itsAd" )
      */
-    protected $addComments;
+    protected $adComments;
 
     /**
      * Get id
@@ -232,36 +232,37 @@ class Ad
         return $this->categories;
     }
 
+
     /**
-     * Add addComments
+     * Add adComments
      *
-     * @param \BoardBundle\Entity\Comment $addComments
+     * @param \BoardBundle\Entity\Comment $adComments
      * @return Ad
      */
-    public function addAddComment(\BoardBundle\Entity\Comment $addComments)
+    public function addAdComment(\BoardBundle\Entity\Comment $adComments)
     {
-        $this->addComments[] = $addComments;
+        $this->adComments[] = $adComments;
 
         return $this;
     }
 
     /**
-     * Remove addComments
+     * Remove adComments
      *
-     * @param \BoardBundle\Entity\Comment $addComments
+     * @param \BoardBundle\Entity\Comment $adComments
      */
-    public function removeAddComment(\BoardBundle\Entity\Comment $addComments)
+    public function removeAdComment(\BoardBundle\Entity\Comment $adComments)
     {
-        $this->addComments->removeElement($addComments);
+        $this->adComments->removeElement($adComments);
     }
 
     /**
-     * Get addComments
+     * Get adComments
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAddComments()
+    public function getAdComments()
     {
-        return $this->addComments;
+        return $this->adComments;
     }
 }

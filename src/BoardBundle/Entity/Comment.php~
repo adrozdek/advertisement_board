@@ -37,7 +37,7 @@ class Comment
 
 
     /**
-     * @ORM\ManyToOne( targetEntity = "Ad", inversedBy = "addComments" )
+     * @ORM\ManyToOne( targetEntity = "Ad", inversedBy = "adComments" )
      * @ORM\JoinColumn( name = "ad_id", referencedColumnName = "id", onDelete = "CASCADE" )
      */
     private $itsAd;
@@ -104,5 +104,51 @@ class Comment
     public function getCommentDate()
     {
         return $this->commentDate;
+    }
+
+    /**
+     * Set itsAd
+     *
+     * @param \BoardBundle\Entity\Ad $itsAd
+     * @return Comment
+     */
+    public function setItsAd(\BoardBundle\Entity\Ad $itsAd = null)
+    {
+        $this->itsAd = $itsAd;
+
+        return $this;
+    }
+
+    /**
+     * Get itsAd
+     *
+     * @return \BoardBundle\Entity\Ad 
+     */
+    public function getItsAd()
+    {
+        return $this->itsAd;
+    }
+
+    /**
+     * Set commentOwner
+     *
+     * @param \BoardBundle\Entity\User $commentOwner
+     * @return Comment
+     */
+    public function setCommentOwner(\BoardBundle\Entity\User $commentOwner = null)
+    {
+        $this->commentOwner = $commentOwner;
+
+        return $this;
+    }
+
+    /**
+     * Get commentOwner
+     *
+     * @return \BoardBundle\Entity\User 
+     */
+    public function getCommentOwner()
+    {
+        return $this->commentOwner;
     }
 }

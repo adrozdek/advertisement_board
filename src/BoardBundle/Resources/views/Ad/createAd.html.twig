@@ -3,5 +3,12 @@
 {% block title %}BoardBundle:Ad:createAd{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Ad:createAd page</h1>
+
+    <h1>Nowe ogłoszenie: </h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
 {% endblock %}

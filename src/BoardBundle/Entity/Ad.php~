@@ -63,9 +63,9 @@ class Ad
     private $categories;
 
     /**
-     * @ORM\OneToMany( targetEntity = "Comment", mappedBy = "itsAdd" )
+     * @ORM\OneToMany( targetEntity = "Comment", mappedBy = "itsAd" )
      */
-    protected $addComments;
+    protected $adComments;
 
     /**
      * Get id
@@ -230,5 +230,71 @@ class Ad
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add addComments
+     *
+     * @param \BoardBundle\Entity\Comment $addComments
+     * @return Ad
+     */
+    public function addAddComment(\BoardBundle\Entity\Comment $addComments)
+    {
+        $this->addComments[] = $addComments;
+
+        return $this;
+    }
+
+    /**
+     * Remove addComments
+     *
+     * @param \BoardBundle\Entity\Comment $addComments
+     */
+    public function removeAddComment(\BoardBundle\Entity\Comment $addComments)
+    {
+        $this->addComments->removeElement($addComments);
+    }
+
+    /**
+     * Get addComments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddComments()
+    {
+        return $this->addComments;
+    }
+
+    /**
+     * Add adComments
+     *
+     * @param \BoardBundle\Entity\Comment $adComments
+     * @return Ad
+     */
+    public function addAdComment(\BoardBundle\Entity\Comment $adComments)
+    {
+        $this->adComments[] = $adComments;
+
+        return $this;
+    }
+
+    /**
+     * Remove adComments
+     *
+     * @param \BoardBundle\Entity\Comment $adComments
+     */
+    public function removeAdComment(\BoardBundle\Entity\Comment $adComments)
+    {
+        $this->adComments->removeElement($adComments);
+    }
+
+    /**
+     * Get adComments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdComments()
+    {
+        return $this->adComments;
     }
 }

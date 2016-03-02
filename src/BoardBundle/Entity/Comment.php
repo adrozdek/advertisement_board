@@ -37,7 +37,7 @@ class Comment
 
 
     /**
-     * @ORM\ManyToOne( targetEntity = "Ad", inversedBy = "addComments" )
+     * @ORM\ManyToOne( targetEntity = "Ad", inversedBy = "adComments" )
      * @ORM\JoinColumn( name = "ad_id", referencedColumnName = "id", onDelete = "CASCADE" )
      */
     private $itsAd;

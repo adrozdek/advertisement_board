@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <h1>{{ ad.title }}</h1>
+
+    <a href="{{ path('modifyAd', {'id': ad.id}) }}">Edytuj</a>
+
+    <img width="300px" src="{{ asset('photos/'~ ad.photoPath) }}" class="thumbnail"/><br>
+
+    <b>Opis: </b> {{ ad.description }}
+    <br>
+    <hr>
+    <br>
+    Dodaj nowy komentarz:
+    <p>
+        {{ render(controller('BoardBundle:Comment:addComment', {'id': ad.id })) }}
+    </p>
+    <hr>
+    <h3>Komentarze: </h3>
+
+    {% for comment in ad.adComments %}
+        <p>
+            <b>{{ comment.commentOwner.username | capitalize }}</b><br>
+            {{ comment.commentText }}<br>
+            {{ comment.commentDate|date('Y-m-d H:i:s') }}
+        </p>
+    {% endfor %}
+
+{% endblock %}
