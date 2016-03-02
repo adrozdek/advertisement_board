@@ -20,8 +20,41 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany( targetEntity = "Ad", mappedBy ="owner")
+     */
+    protected $ads;
 
+    /**
+     * Add ads
+     *
+     * @param \BoardBundle\Entity\Ad $ads
+     * @return User
+     */
+    public function addAd(\BoardBundle\Entity\Ad $ads)
+    {
+        $this->ads[] = $ads;
+
+        return $this;
+    }
+
+    /**
+     * Remove ads
+     *
+     * @param \BoardBundle\Entity\Ad $ads
+     */
+    public function removeAd(\BoardBundle\Entity\Ad $ads)
+    {
+        $this->ads->removeElement($ads);
+    }
+
+    /**
+     * Get ads
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAds()
+    {
+        return $this->ads;
+    }
 }
-
-
-    ?>
