@@ -12,6 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class AdRepository extends EntityRepository
 {
+    public function findAllByCreationDate() {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a ORDER BY a.creationDate DESC'
+        );
+
+        return $query->getResult();
+    }
+
+
     public function findByUserActive(User $user, $nowTime) {
         $em = $this->getEntityManager();
         $query = $em->createQuery(
@@ -33,4 +43,7 @@ class AdRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+
+
 }

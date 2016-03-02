@@ -1,12 +1,11 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}{{ category.name | upper }}{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
 {% block body %}
     <h1>Kategoria: {{ category.name | upper }}</h1>
 
-
-    <a href='{{ path('showCategoryExpiration', {'id': category.id }) }}'>Od najkrótszego czasu do wygaśnięcia</a> &nbsp;
+    <a href='{{ path('showCategory', {'id': category.id }) }}'>Od najnowszego</a>
 
     <div class="table-responsive">
         <table class="table">
@@ -16,13 +15,13 @@
                 <td>Tytuł</td>
                 <td>Opis</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                <td>Właściciel</td>
+                    <td>Właściciel</td>
                 {% endif %}
             </tr>
 
             {% for ad in ads %}
 
-               {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'id' : ad.id } %}
+                {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'id' : ad.id } %}
 
             {% endfor %}
 

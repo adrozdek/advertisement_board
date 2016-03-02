@@ -12,5 +12,33 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    public function findCategoriesOrderByName() {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT c FROM BoardBundle:Category c ORDER BY c.name ASC'
+        );
+
+        return $query->getResult();
+    }
+
+    public function findAdsinCategoryOBCreationDate(Category $category) {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a JOIN a.categories t WHERE t = :category ORDER BY a.creationDate DESC'
+        )->setParameter('category', $category);
+
+        return $query->getResult();
+    }
+
+    public function findAdsinCategoryOBExpirationDate(Category $category) {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a JOIN a.categories t WHERE t = :category ORDER BY a.expirationDate ASC'
+        )->setParameter('category', $category);
+
+        return $query->getResult();
+    }
+
+
 
 }

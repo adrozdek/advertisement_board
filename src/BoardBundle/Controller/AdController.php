@@ -216,7 +216,7 @@ class AdController extends Controller
     public function allAdsAction()
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
-        $ads = $repo->findAll();
+        $ads = $repo->findAllByCreationDate();
         //@TODO: po dacie dodania.
 
         return ['ads' => $ads];

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
@@ -64,8 +65,7 @@ class CategoryController extends Controller
     public function allCategoriesAction()
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
-        $categories = $repo->findAll();
-        //@TODO: wyszukiwanie alfabetyczne
+        $categories = $repo->findCategoriesOrderByName();
 
         return ['categories' => $categories];
     }
@@ -78,7 +78,38 @@ class CategoryController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
         $category = $repo->find($id);
-        return ['category' => $category];
+        $ads = $repo->findAdsinCategoryOBCreationDate($category);
+
+        //@TODO: pokaż po expirationDate
+        return ['category' => $category, 'ads' => $ads];
+    }
+
+    /**
+     * @Route("/showCategoryExp/{id}", name = "showCategoryExpiration")
+     * @Template("BoardBundle:Category:showCategoryExp.html.twig")
+     */
+    public function showCategoryByExpirationAction($id)
+    {
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
+        $category = $repo->find($id);
+        $ads = $repo->findAdsinCategoryOBExpirationDate($category);
+
+        return ['category' => $category, 'ads' => $ads];
+    }
+
+    /**
+     * @Route("/removeCategory/{id}", name = "removeCategory")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function removeCategoryAction($id) {
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
+        $category = $repo->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($category);
+        $em->flush();
+
+        return $this->redirectToRoute('showAllCategories');
     }
 
 }
