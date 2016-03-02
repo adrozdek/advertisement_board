@@ -12,10 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class AdRepository extends EntityRepository
 {
-    public function findByUser(User $user, $nowTime) {
+    public function findByUserActive(User $user, $nowTime) {
         $em = $this->getEntityManager();
         $query = $em->createQuery(
             'SELECT a FROM BoardBundle:Ad a WHERE a.owner = :user AND a.expirationDate > :nowTime ORDER BY a.creationDate DESC'
+        );
+        $query->setParameter('user', $user);
+        $query->setParameter('nowTime', $nowTime);
+
+        return $query->getResult();
+    }
+
+    public function findByUserOld(User $user, $nowTime) {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a WHERE a.owner = :user AND a.expirationDate < :nowTime ORDER BY a.creationDate DESC'
         );
         $query->setParameter('user', $user);
         $query->setParameter('nowTime', $nowTime);

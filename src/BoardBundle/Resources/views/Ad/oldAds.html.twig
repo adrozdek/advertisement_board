@@ -3,5 +3,19 @@
 {% block title %}BoardBundle:Ad:oldAds{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Ad:oldAds page</h1>
+
+    <h1>Stare ogłoszenia: </h1>
+
+    <div class="table-responsive">
+        <table class="table">
+
+            {% for ad in ads %}
+
+                {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'ad': ad} %}
+
+            {% endfor %}
+        </table>
+    </div>
+
+
 {% endblock %}

@@ -220,15 +220,17 @@ class AdController extends Controller
     }
 
     /**
-     * @Route("/myAds", name = "showAllMyAds" )
-     * @Template("BoardBundle:Ad:allAds.html.twig")
+     * @Route("/myAds", name = "showAllMyActiveAds" )
+     * @Template("BoardBundle:Ad:myAds.html.twig")
      */
-    public function myAdsAction()
+    public function myAdsActiveAction()
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
+
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
-        $myAds = $repo->findByUser($this->getUser(), $dateNow);
+
+        $myAds = $repo->findByUserActive($this->getUser(), $dateNow);
         //orderedBy creationDate DESC
         //@TODO: albo opcja order by expirationDate
 
@@ -236,12 +238,23 @@ class AdController extends Controller
     }
 
     /**
-     * @Route("/oldAds")
+     * @Route("/oldAds", name = "showMyOldAds" )
      * @Template()
      */
     public function oldAdsAction()
     {
-        return [];
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
+
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+
+        $myAds = $repo->findByUserOld($this->getUser(), $dateNow);
+        //orderedBy creationDate DESC
+        //@TODO: albo opcja order by expirationDate
+
+        return ['ads' => $myAds ];
     }
+
+
 
 }
