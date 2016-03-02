@@ -1,0 +1,9 @@
+<tr>
+    <td>
+        <img width="150px" src="{{ asset('photos/'~ ad.photoPath) }}" class="thumbnail"/></td>
+    <td><a href="{{ path('showAd', {'id': ad.id }) }}">{{ ad.title }}</a></td>
+    <td>{{ ad.description }}</td>
+    <td>{{ ad.owner.username }}</td>
+
+
+</tr>

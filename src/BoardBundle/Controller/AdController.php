@@ -81,6 +81,11 @@ class AdController extends Controller
             $ad->setOwner($user);
             $user->addAd($ad);
 
+            //@TODO: wrong time. -1h
+
+            $date = date('Y-m-d H:i:s', time());
+            $ad->setCreationDate(new \DateTime($date));
+
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($ad);
@@ -168,6 +173,27 @@ class AdController extends Controller
         return $this->redirectToRoute('showAd', ['id' => $id]);
     }
 
+    /**
+     * @Route("/removeAd/{id}", name = "removeAd")
+     */
+    public function removeAdAction($id) {
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
+        $ad = $repo->find($id);
+
+        $photoPath = $ad->getPhotoPath();
+
+        if ($photoPath != null && $photoPath > 0) {
+            $path = $this->container->getParameter('kernel.root_dir') . '/../web/photos/' . $photoPath;
+            unlink($path);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($ad);
+        $em->flush();
+
+        return $this->redirectToRoute('showAllMyAds');
+    }
+
 
     /**
      * @Route("/showAd/{id}", name = "showAd")
@@ -187,16 +213,26 @@ class AdController extends Controller
      */
     public function allAdsAction()
     {
-        return [];
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
+        $ads = $repo->findAll();
+
+        return ['ads' => $ads];
     }
 
     /**
      * @Route("/myAds", name = "showAllMyAds" )
-     * @Template()
+     * @Template("BoardBundle:Ad:allAds.html.twig")
      */
     public function myAdsAction()
     {
-        return [];
+        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+        $myAds = $repo->findByUser($this->getUser(), $dateNow);
+        //orderedBy creationDate DESC
+        //@TODO: albo opcja order by expirationDate
+
+        return ['ads' => $myAds ];
     }
 
     /**

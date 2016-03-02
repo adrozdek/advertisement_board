@@ -68,6 +68,11 @@ class Ad
     protected $adComments;
 
     /**
+     * @ORM\Column(name = "creationDate", type="datetime")
+     */
+    protected $creationDate;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -264,5 +269,28 @@ class Ad
     public function getAdComments()
     {
         return $this->adComments;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Ad
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
     }
 }

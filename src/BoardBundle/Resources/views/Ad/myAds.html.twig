@@ -3,5 +3,16 @@
 {% block title %}BoardBundle:Ad:myAds{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Ad:myAds page</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+
+            {% for ad in ads %}
+
+                {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'ad': ad} %}
+
+            {% endfor %}
+        </table>
+    </div>
+
 {% endblock %}

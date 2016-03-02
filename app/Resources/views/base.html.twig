@@ -31,9 +31,10 @@
         {% block footer %}
 
 
-                {#<hr>#}
-                {#<a href="{{ path('showAll') }}"><b>WSZYTKIE KONTAKTY</b></a> &nbsp;#}
-                {#<a href="{{ path('showAllGroups') }}"><b>WSZYSTKIEG GRUPY</b></a>#}
+                <hr>
+                <a href="{{ path('showAllAds') }}"><b>WSZYTKIE OGLOSZENIA</b></a> &nbsp;
+                <a href="{{ path('showAllMyAds') }}"><b>TWOJE OGLOSZENIA</b></a>
+                {#TODO: dodanie menu pokaż profil#}
 
 
         {% endblock %}

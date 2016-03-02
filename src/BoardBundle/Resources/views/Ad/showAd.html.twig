@@ -5,6 +5,7 @@
     <h1>{{ ad.title }}</h1>
 
     <a href="{{ path('modifyAd', {'id': ad.id}) }}">Edytuj</a>
+    <a href="{{ path('removeAd', {'id': ad.id}) }}" class="glyphicon glyphicon-trash"></a>
 
     <img width="300px" src="{{ asset('photos/'~ ad.photoPath) }}" class="thumbnail"/><br>
 
