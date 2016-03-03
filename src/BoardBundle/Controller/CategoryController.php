@@ -78,7 +78,10 @@ class CategoryController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
         $category = $repo->find($id);
-        $ads = $repo->findAdsinCategoryOBCreationDate($category);
+        date_default_timezone_set("Europe/Warsaw");
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+        $ads = $repo->findAdsinCategoryOBCreationDate($category, $dateNow);
 
         //@TODO: pokaż po expirationDate
         return ['category' => $category, 'ads' => $ads];
@@ -92,14 +95,17 @@ class CategoryController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
         $category = $repo->find($id);
-        $ads = $repo->findAdsinCategoryOBExpirationDate($category);
+        date_default_timezone_set("Europe/Warsaw");
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+        $ads = $repo->findAdsinCategoryOBExpirationDate($category, $dateNow);
 
         return ['category' => $category, 'ads' => $ads];
     }
 
     /**
      * @Route("/admin/removeCategory/{id}", name = "removeCategory")
-     * @Security("has_role('ROLE_ADMIN')")
+     *
      */
     public function removeCategoryAction($id) {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');

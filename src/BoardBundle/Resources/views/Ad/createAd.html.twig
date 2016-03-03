@@ -4,11 +4,76 @@
 
 {% block body %}
 
-    <h1>Nowe ogłoszenie: </h1>
+    {#<div class="middle">#}
+        {#<h1>Dodaj ogłoszenie: </h1>#}
 
-    {{ form_start(form) }}
+        {#{{ form_start(form) }}#}
+        {#{{ form_widget(form) }}#}
+        {#{{ form_end(form) }}#}
+    {#</div>#}
 
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <div class="bs-example">
+
+        <div class="form-groups">
+            <div class="col-xs-offset-2 col-xs-7">
+                <h1>Nowe ogłoszenie</h1><br>
+            </div>
+
+                {{ form_start(form) }}
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <div class="col-xs-offset-2 col-xs-7">
+                    Tytuł:
+                    {{ form_widget(form.title, { 'attr': {'class': 'form-control' }}) }}
+                    {#<input type="text" id="title" name="form[title]" required="required" />#}
+                    {{ form_errors(form) }}
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
+                    <br>
+                    Opis:
+                    {{ form_widget(form.description, { 'attr': {'class': 'form-control' } }) }}
+                    {#<input type="text" id="description" name="form[description]" required="required"/>#}
+                    {{ form_errors(form) }}
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
+                    <br>
+                    Zdjęcie:
+                    {#<input type="file" id="form_photoPath" name="form[photoPath]" required="required"/>#}
+                    {{ form_row(form.photoPath) }}
+
+
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
+                    <br>
+                    Data wygaśnięcia:
+                    {% for child in form.expirationDate %}
+                        {{ form_widget(child) }} &nbsp;
+                    {% endfor %}
+
+                    {{ form_errors(form) }}
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
+                    <br>
+                    Kategorie:
+
+                    {% for child in form.categories %}
+                        {{ form_widget(child) }}
+                        {{ form_label(child) }} &nbsp;
+
+                    {% endfor %}
+
+                    <br>
+
+
+                    <input type="submit">
+                    {{ form_end(form) }}
+
+                </div>
+
+        </div>
+    </div>
+
+
 
 {% endblock %}

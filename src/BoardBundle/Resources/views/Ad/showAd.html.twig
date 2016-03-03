@@ -2,44 +2,61 @@
 
 {% block body %}
 
-<div class="middle">
+    <div class="middle">
 
-    <h1>{{ ad.title }}</h1>
-    {% if ad.owner.id == app.user.id %}
-    <a href="{{ path('modifyAd', {'id': ad.id}) }}">Edytuj</a>&nbsp;
-    <a href="{{ path('removeAd', {'id': ad.id}) }}">Usuń</a>
-    {% endif %}
+        <h1>{{ ad.title }}</h1>
 
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <td class="col-md-6"><img width="450px" src="{{ asset('photos/'~ ad.photoPath) }}"
-                                          class="thumbnail"/><br></td>
-                <td class="col-md-6"><b>Opis: </b> {{ ad.description }}</td>
+        <p class="list-group-item-text">
 
-            </tr>
-
-        </table>
-    </div>
-
-    <br>
-    <hr>
-    <br>
-    Dodaj nowy komentarz:
-    <p>
-        {{ render(controller('BoardBundle:Comment:addComment', {'id': ad.id })) }}
-    </p>
-    <hr>
-    <h3>Komentarze: </h3>
-
-    {% for comment in comments %}
-        <p>
-            <b>{{ comment.commentOwner.username | capitalize }}</b><br>
-            {{ comment.commentText }}<br>
-            {{ comment.commentDate|date('Y-m-d H:i:s') }}
-            <a href="{{ path('removeComment', { 'id': comment.id }) }}">Usuń</a>
+            Kategorie:
+            {% for category in ad.categories %}
+                <span class="label label-info"><big>{{ category.name }}</big></span>
+            {% endfor %}
         </p>
-    {% endfor %}
-</div>
+        <br>
+
+        {% if app.user.id is defined %}
+            {% if ad.owner.id == app.user.id %}
+                <a href="{{ path('modifyAd', {'id': ad.id}) }}">Edytuj</a>&nbsp;
+                <a href="{{ path('removeAd', {'id': ad.id}) }}">Usuń</a>
+            {% endif %}
+        {% endif %}
+
+
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <td class="col-md-6"><img width="450px" src="{{ asset('photos/'~ ad.photoPath) }}"
+                                              class="thumbnail"/><br></td>
+                    <td class="col-md-6"><b>Opis: </b> {{ ad.description }}</td>
+
+                </tr>
+                <tr>
+                    <td class="col-md-6">Data utworzenia: {{ ad.creationDate | date('Y-m-d H:i:s') }}</td>
+                    <td class="col-md-6">Data wygaśnięcia: {{ ad.expirationDate | date('Y-m-d H:i:s') }}</td>
+                </tr>
+
+            </table>
+        </div>
+
+
+        <hr>
+
+        Dodaj komentarz:
+        <p>
+            {{ render(controller('BoardBundle:Comment:addComment', {'id': ad.id })) }}
+        </p>
+        <hr>
+        <h3>Komentarze: </h3>
+
+        {% for comment in comments %}
+            <p>
+                <b>{{ comment.commentOwner.username | capitalize }}</b><br>
+                {{ comment.commentText }}<br>
+                {{ comment.commentDate|date('Y-m-d H:i:s') }}
+                <a href="{{ path('removeComment', { 'id': comment.id }) }}">Usuń</a>
+            </p>
+        {% endfor %}
+    </div>
 
 {% endblock %}

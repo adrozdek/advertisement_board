@@ -27,6 +27,17 @@
 
                 <li role="presentation"><a href="{{ path('showAllAds') }}"><b>OGLOSZENIA</b></a></li>
                 <li role="presentation"><a href="{{ path('showAllCategories') }}"><b>KATEGORIE</b></a></li>
+                {% block search %}
+                    <li>
+                        <div>
+                            <form action="{{ path('searchPost') }}" method="post">
+                                <label>
+                                    <input type="text" name="name"/></label>
+                                <input type="submit" name="submit" value="Znajdź">
+                            </form>
+                        </div>
+                    </li>
+                {% endblock %}
 
                 {% block access %}
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -36,7 +47,8 @@
                         </li>
                         <li role="presentation"><a href="{{ path('fos_user_security_logout') }}"><b>WYLOGUJ</b></a></li>
                     {% else %}
-                        <li role="presentation"><a href="{{ path('fos_user_security_login') }}"><b>LOGOWANIE</b></a></li>
+                        <li role="presentation"><a href="{{ path('fos_user_security_login') }}"><b>LOGOWANIE</b></a>
+                        </li>
                     {% endif %}
 
                 {% endblock %}

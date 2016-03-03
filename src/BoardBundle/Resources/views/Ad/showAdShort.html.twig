@@ -1,8 +1,8 @@
 
 <tr>
     <td  class="col-md-2"><img width="150px" src="{{ asset('photos/'~ ad.photoPath) }}" class="thumbnail"/></td>
-    <td  class="col-md-2"><a href="{{ path('showAd', {'id': ad.id }) }}">{{ ad.title }}</a></td>
-    <td  class="col-md-8">{{ ad.description[0:50] }}{% if ad.description | length > 50 %}...{% endif %}</td>
+    <td  class="col-md-4"><a href="{{ path('showAd', {'id': ad.id }) }}">{{ ad.title }}</a></td>
+    <td  class="col-md-6">{{ ad.description[0:150] }}{% if ad.description | length > 100 %}...{% endif %}</td>
     {% if is_granted('ROLE_ADMIN') %}
         <td>{{ ad.owner.username }}</td>
     {% endif %}

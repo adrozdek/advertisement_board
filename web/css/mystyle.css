@@ -1,7 +1,3 @@
-.container-fluid {
-    text-align: center;
-    margin: auto;
-}
 
 td,th {
     vertical-align: middle;
@@ -18,7 +14,11 @@ td,th {
 h1 {
     vertical-align: middle;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 50px;
+}
+
+.weird-h1 {
+    padding-top: 80px;
 }
 
 .higher {
@@ -51,7 +51,7 @@ td a{
 }
 
 .bs-example {
-    width: 500px;
+    width: 700px;
     text-align: center;
     padding-top: 50px;
     margin: auto auto ;
@@ -62,6 +62,15 @@ td a{
 
     margin: auto auto ;
 }
+
+
+
+.container-fluid {
+    text-align: center;
+    margin: auto;
+
+}
+
 
 
 

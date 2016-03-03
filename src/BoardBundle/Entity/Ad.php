@@ -3,6 +3,7 @@
 namespace BoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ad
@@ -39,6 +40,7 @@ class Ad
      * @var string
      *
      * @ORM\Column(name="photoPath", type="string", length=255)
+     * @Assert\File()
      */
     private $photoPath;
 

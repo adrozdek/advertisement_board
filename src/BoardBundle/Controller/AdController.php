@@ -7,7 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class AdController extends Controller
 {
@@ -17,14 +20,14 @@ class AdController extends Controller
         $form->add('title', 'text', ['trim' => true]);
         $form->add('description', 'textarea', ['trim' => true]);
         $form->add('photoPath', 'file', ['data_class' => null, 'required' => false]);
-        $form->add('expirationDate', 'datetime');
+        $form->add('expirationDate', 'datetime',
+            ['years' => range(date('Y') +1, date('Y'))]);
         $form->add('categories', 'entity', [
             'class' => 'BoardBundle\Entity\Category',
             'property' => 'name',
             'required' => false,
             'multiple' => true,
             'expanded' => true]);
-        $form->add('save', 'submit');
         $form->setAction($action);
 
         $adFrom = $form->getForm();
@@ -36,6 +39,7 @@ class AdController extends Controller
      * @Route("/createAd", name = "createAd" )
      * @Template()
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      */
     public function createAdAction()
     {
@@ -49,6 +53,7 @@ class AdController extends Controller
      * @Route("/createAd", name = "createAdPost")
      * @Template()
      * @Method("POST")
+     * @Security("has_role('ROLE_USER')")
      */
     public function createAdPostAction(Request $req)
     {
@@ -57,7 +62,7 @@ class AdController extends Controller
         $form = $this->generateAdForm($ad, $this->generateUrl('createAdPost'));
         $form->handleRequest($req);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isValid()) {
 
             if ($ad->getPhotoPath() != null) {
                 /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
@@ -95,7 +100,8 @@ class AdController extends Controller
 
             return $this->redirectToRoute('showAd', ['id' => $id]);
         } else {
-            return $this->redirectToRoute('showAllMyActiveAds');
+            return $this->render('BoardBundle:Ad:createAd.html.twig', ['form' => $form->createView()]);
+            //return $this->redirectToRoute('showAllMyActiveAds');
         }
     }
 
@@ -103,6 +109,7 @@ class AdController extends Controller
      * @Route("/modifyAd/{id}", name = "modifyAd")
      * @Template("BoardBundle:Ad:createAd.html.twig")
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      */
     public function modifyAdAction($id)
     {
@@ -118,6 +125,7 @@ class AdController extends Controller
      * @Route("/modifyAd/{id}", name = "modifyAdPost")
      * @Template("BoardBundle:Ad:createAd.html.twig")
      * @Method("POST")
+     * @Security("has_role('ROLE_USER')")
      */
     public function modifyAdPostAction(Request $req, $id)
     {
@@ -174,6 +182,7 @@ class AdController extends Controller
 
     /**
      * @Route("/removeAd/{id}", name = "removeAd")
+     * @Security("has_role('ROLE_USER')")
      */
     public function removeAdAction($id) {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
@@ -196,7 +205,6 @@ class AdController extends Controller
 
     /**
      * @Route("/showAd/{id}", name = "showAd")
-     * @Template()
      */
     public function showAdAction($id)
     {
@@ -206,18 +214,21 @@ class AdController extends Controller
         $repoComments = $this->getDoctrine()->getRepository('BoardBundle:Comment');
         $comments = $repoComments->findByCommentDate($ad);
 
-        return ['ad' => $ad, 'comments' => $comments];
+        return $this->render('BoardBundle:Ad:showAd.html.twig', ['ad' => $ad, 'comments' => $comments]);
     }
 
     /**
      * @Route("/allAds", name = "showAllAds")
-     * @Template()
+     *
      */
     public function allAdsAction(Request $request)
     {
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
         $em    = $this->get('doctrine.orm.entity_manager');
-        $dql   = 'SELECT a FROM BoardBundle:Ad a ORDER BY a.creationDate DESC';
-        $query = $em->createQuery($dql);
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime ORDER BY a.creationDate DESC');
+        $query->setParameter('nowTime', $dateNow);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -230,10 +241,34 @@ class AdController extends Controller
         return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination));
 
     }
+    /**
+     * @Route("/allAdsExp", name = "showAllAdsExp")
+     *
+     */
+    public function allAdsExpirationAction(Request $request)
+    {
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime ORDER BY a.expirationDate ASC');
+        $query->setParameter('nowTime', $dateNow);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Ad:allAdsExp.html.twig', array('pagination' => $pagination));
+
+    }
 
     /**
      * @Route("/myAds", name = "showAllMyActiveAds" )
-     * @Template("BoardBundle:Ad:myAds.html.twig")
+     * @Security("has_role('ROLE_USER')")
      */
     public function myAdsActiveAction(Request $request)
     {
@@ -266,7 +301,7 @@ class AdController extends Controller
 
     /**
      * @Route("/oldAds", name = "showMyOldAds" )
-     * @Template()
+     * @Security("has_role('ROLE_USER')")
      */
     public function oldAdsAction(Request $request)
     {
@@ -296,6 +331,36 @@ class AdController extends Controller
         // parameters to template
         return $this->render('BoardBundle:Ad:oldAds.html.twig', array('pagination' => $pagination));
     }
+
+    /**
+     * @Route("/search", name = "searchPost" )
+     * @Method("POST")
+     */
+    public function searchPostAction(Request $request) {
+        $search = $request->request->get('name');
+        $em    = $this->get('doctrine.orm.entity_manager');
+        date_default_timezone_set("Europe/Warsaw");
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime AND a.title LIKE :search ORDER BY a.creationDate DESC'
+        );
+        $query->setParameter('search', '%' . $search . '%');
+        $query->setParameter('nowTime', $dateNow);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination, 'no' => 'no'));
+
+    }
+
 
 
 
