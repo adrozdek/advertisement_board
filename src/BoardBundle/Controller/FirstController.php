@@ -22,7 +22,6 @@ class FirstController extends Controller
     public function showProfileAction() {
         $user = $this->getUser();
 
-
         return ['user' => $user];
 
     }

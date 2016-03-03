@@ -5,11 +5,7 @@
 {% block body %}
 
     <h1>Ogłoszenia</h1>
-    {% if no is not defined %}
-        <div class="middle">
-            Sortuj: <a href='{{ path('showAllAdsExp') }}'>Od najbliższej daty wygaśnięcia</a>
-        </div>
-    {% endif %}
+
 
     <div class="table-responsive">
 
@@ -21,14 +17,22 @@
         <table class="table">
             <tr class="no">
                 {# sorting of properties based on query components #}
-                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Zdjęcie', 'a.id') }}</th>
-                <th class="col-md-2"{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tytuł', 'a.title') }}</th>
-                <th class="col-md-8">{{ knp_pagination_sortable(pagination, 'Opis', ['a.date', 'a.time']) }}</th>
+                <th class="col-md-1">Zdjęcie</th>
+                <th class="col-md-4"{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tytuł', 'a.title') }}</th>
+                <th class="col-md-3">{{ knp_pagination_sortable(pagination, 'Opis', 'a.description') }}</th>
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Data wygaśnięcia', 'a.expirationDate') }}</th>
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Data dodania', 'a.creationDate') }}</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ knp_pagination_sortable(pagination, 'Uzytkownik', 'a.owner.userName') }}</th>
+                    {#TODO: sorting by username#}
+                {% endif %}
+
             </tr>
 
             {% for ad in pagination %}
 
                 {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'ad': ad} %}
+
             {% endfor %}
         </table>
         {# display navigation #}

@@ -74,35 +74,31 @@ class CategoryController extends Controller
      * @Route("/showCategory/{id}", name = "showCategory")
      * @Template()
      */
-    public function showCategoryAction($id)
+    public function showCategoryAction(Request $request, $id)
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
         $category = $repo->find($id);
         date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
-        $ads = $repo->findAdsinCategoryOBCreationDate($category, $dateNow);
 
-        //@TODO: pokaż po expirationDate
-        return ['category' => $category, 'ads' => $ads];
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a JOIN a.categories t WHERE t = :category AND a.expirationDate > :dateNow ORDER BY a.creationDate DESC'
+        )->setParameter('category', $category)->setParameter('dateNow', $dateNow);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Category:showCategory.html.twig', array('category' => $category, 'pagination' => $pagination));
+
     }
-
-    /**
-     * @Route("/showCategoryExp/{id}", name = "showCategoryExpiration")
-     * @Template("BoardBundle:Category:showCategoryExp.html.twig")
-     */
-    public function showCategoryByExpirationAction($id)
-    {
-        $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
-        $category = $repo->find($id);
-        date_default_timezone_set("Europe/Warsaw");
-        $date = date('Y-m-d H:i:s', time());
-        $dateNow = (new \DateTime($date));
-        $ads = $repo->findAdsinCategoryOBExpirationDate($category, $dateNow);
-
-        return ['category' => $category, 'ads' => $ads];
-    }
-
+    
     /**
      * @Route("/admin/removeCategory/{id}", name = "removeCategory")
      *
