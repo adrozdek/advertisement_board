@@ -2,8 +2,19 @@
 
 {% block title %}BoardBundle:Comment:myComments{% endblock %}
 
+{% block profile %}
+    <li><a href="{{ path('showMyComments') }}"><b>KOMENTARZE</b></a></li>
+    <li><a href="{{ path('showProfile') }}"><b>WIADOMOŚCI</b></a></li>
+
+{% endblock %}
+
 {% block body %}
+    <br>
+    <br>
+
     <h1>Moje komentarze</h1>
+    <br>
+
 
     <div class="table-responsive">
         <table class="table">

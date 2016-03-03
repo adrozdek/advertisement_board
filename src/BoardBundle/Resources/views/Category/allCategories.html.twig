@@ -4,21 +4,30 @@
 
 {% block body %}
     <h1>Kategorie</h1>
-
-    Dodaj nową: {{ render(controller('BoardBundle:Category:createCategory')) }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="middle">
+            Dodaj nową: {{ render(controller('BoardBundle:Category:createCategory')) }}
+        </div>
+    {% endif %}
+    <br>
 
     <div class="table-responsive">
         <table class="table">
-            <tr  class="no">
-                <td>Nazwa</td>
-                <td>Ilość ogłoszeń</td>
-                <td>Usuń</td>
+            <tr class="no">
+                <th><b>Nazwa</b></th>
+                <th><b>Ilość ogłoszeń</b></th>
+                {% if is_granted('ROLE_ADMIN') %}
+                <th><b>Usuń</b></th>
+                {% endif %}
             </tr>
             {% for category in categories %}
                 <tr>
-                    <td><a href="{{ path('showCategory', {'id': category.id }) }}">{{  category.name }}</a></td>
+                    <td><a href="{{ path('showCategory', {'id': category.id }) }}">{{ category.name }}</a></td>
                     <td>{{ category.ads | length }}</td>
-                    <td><a href="{{ path('removeCategory', {'id': category.id }) }}"  class="glyphicon glyphicon-trash"></a></td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <td><a href="{{ path('removeCategory', {'id': category.id }) }}"
+                           class="glyphicon glyphicon-trash"></a></td>
+                    {% endif %}
                 </tr>
 
             {% endfor %}

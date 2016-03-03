@@ -1,33 +1,51 @@
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+<div class="container-fluid">
 
-    <div class="container">
+    <div class="bs-example">
 
         <div class="form-groups">
+            <div class="col-xs-offset-2 col-xs-7">
+                <h1>Rejestracja</h1><br>
+            </div>
 
-            Email:<br>
-            {{ form_widget(form.email, { 'attr': {'class': 'form-control' }}) }}
-            {{ form_errors(form.email) }}
+            <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
 
-            <br><br>
-            Twoja nazwa użytkownika:<br>
-            {{ form_widget(form.username, { 'attr': {'class': 'form-control' } }) }}
-            {{ form_errors(form.username) }}
+                <div class="col-xs-offset-2 col-xs-7">
+                    Email:<br>
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control' }}) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
 
-            <br><br>
-            Hasło:<br>
-            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control' } }) }}
-            {{ form_errors(form.plainPassword.first) }}
+                    <br><br>
+                    Twoja nazwa użytkownika:<br>
+                    {{ form_widget(form.username, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(form.username) }}
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
 
-            <br><br>
-            Powtórz hasło:<br>
-            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
-            {{ form_errors(form.plainPassword.second) }}
+                    <br><br>
+                    Hasło:<br>
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+                <div class="col-xs-offset-2 col-xs-7">
+
+                    <br><br>
+                    Powtórz hasło:<br>
+                    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+                <br><br>
+
+                {{ form_rest(form) }}
+
+                <div class="col-xs-offset-2 col-xs-7">
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
 
 
-            {{ form_rest(form) }}
-
-
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Zarejestruj">
+            </form>
         </div>
     </div>
-</form>
+</div>

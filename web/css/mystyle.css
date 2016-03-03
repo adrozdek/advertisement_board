@@ -1,15 +1,28 @@
-.container{
+.container-fluid {
     text-align: center;
+    margin: auto;
 }
 
-td, th {
+td,th {
     vertical-align: middle;
     text-align: center;
+    margin: auto auto auto auto ;
 }
+
+.lower {
+    padding-top: 50px;
+
+}
+
 
 h1 {
     vertical-align: middle;
     text-align: center;
+    padding-top: 40px;
+}
+
+.higher {
+    padding-top: -10px;
 }
 
 tr:hover {
@@ -29,4 +42,26 @@ td a{
     width: 600px;
     text-align: center;
 }
+
+.nav {
+    display: inline-block !important;
+    float: none !important;
+    vertical-align: top !important;
+    text-align: center !important;
+}
+
+.bs-example {
+    width: 500px;
+    text-align: center;
+    padding-top: 50px;
+    margin: auto auto ;
+}
+
+.middle {
+    text-align: center;
+
+    margin: auto auto ;
+}
+
+
 

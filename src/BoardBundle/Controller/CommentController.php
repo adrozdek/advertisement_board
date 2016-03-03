@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 
 class CommentController extends Controller
@@ -27,6 +28,7 @@ class CommentController extends Controller
      * @Route("/addComment/{id}", name = "addComment")
      * @Template()
      * @Method("GET")
+     * @Security("has_role('ROLE_USER')")
      */
     public function addCommentAction($id)
     {
@@ -40,6 +42,7 @@ class CommentController extends Controller
      * @Route("/addComment/{id}", name = "addCommentPost")
      * @Template()
      * @Method("POST")
+     * @Security("has_role('ROLE_USER')")
      */
     public function addCommentPostAction(Request $req, $id)
     {
@@ -79,14 +82,15 @@ class CommentController extends Controller
     //@TODO: ewentualna edycja komentarzy
 
     /**
-     * @Route("/myComments")
+     * @Route("/myComments", name = "showMyComments")
      * @Template()
+     * @Security("has_role('ROLE_USER')")
+     *
      */
     public function myCommentsAction()
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Comment');
         $comments = $repo->findCommentsByUser($this->getUser());
-        //@TODO: join żeby wiedzieć tylko komentarze do aktywnych ogłoszeń
 
         return ['comments' => $comments];
     }
@@ -95,6 +99,7 @@ class CommentController extends Controller
     /**
      * @Route("/removeComment/{id}", name = "removeComment" )
      * @Template()
+     * @Security("has_role('ROLE_USER')")
      */
     public function removeCommentAction($id)
     {

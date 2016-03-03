@@ -22,7 +22,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/createCategory", name = "createCategory")
+     * @Route("/admin/createCategory", name = "createCategory")
      * @Template()
      * @Method("GET")
      */
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/createCategory", name = "createCategoryPost")
+     * @Route("/admin/createCategory", name = "createCategoryPost")
      * @Template()
      * @Method("POST")
      */
@@ -98,7 +98,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/removeCategory/{id}", name = "removeCategory")
+     * @Route("/admin/removeCategory/{id}", name = "removeCategory")
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function removeCategoryAction($id) {

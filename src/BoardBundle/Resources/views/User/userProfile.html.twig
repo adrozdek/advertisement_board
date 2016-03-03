@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}BoardBundle:Comment:myComments{% endblock %}
+
+
+
+{% block profile %}
+    <li><a href="{{ path('showMyComments') }}"><b>KOMENTARZE</b></a></li>
+    <li><a href="{{ path('showProfile') }}"><b>WIADOMOŚCI</b></a></li>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Twoje dane: </h1>
+    Imię: {{ user.username }} <br>
+    Nazwisko: <br>
+    Telefon: <br>
+    Miasto: <br>
+
+    <br>Edytuj
+
+{% endblock %}
+
+

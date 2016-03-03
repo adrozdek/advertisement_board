@@ -213,51 +213,88 @@ class AdController extends Controller
      * @Route("/allAds", name = "showAllAds")
      * @Template()
      */
-    public function allAdsAction()
+    public function allAdsAction(Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
-        $ads = $repo->findAllByCreationDate();
-        //@TODO: po dacie dodania.
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = 'SELECT a FROM BoardBundle:Ad a ORDER BY a.creationDate DESC';
+        $query = $em->createQuery($dql);
 
-        return ['ads' => $ads];
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination));
+
     }
 
     /**
      * @Route("/myAds", name = "showAllMyActiveAds" )
      * @Template("BoardBundle:Ad:myAds.html.twig")
      */
-    public function myAdsActiveAction()
+    public function myAdsActiveAction(Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
-
         date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
-
-        $myAds = $repo->findByUserActive($this->getUser(), $dateNow);
+        $user = $this->getUser();
         //orderedBy creationDate DESC
         //@TODO: albo opcja order by expirationDate
 
-        return ['ads' => $myAds ];
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a WHERE a.owner = :user AND a.expirationDate > :nowTime ORDER BY a.creationDate DESC'
+        );
+        $query->setParameter('user', $user);
+        $query->setParameter('nowTime', $dateNow);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Ad:myAds.html.twig', array('pagination' => $pagination));
+
+
     }
 
     /**
      * @Route("/oldAds", name = "showMyOldAds" )
      * @Template()
      */
-    public function oldAdsAction()
+    public function oldAdsAction(Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
-
         date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
+        $user = $this->getUser();
 
-        $myAds = $repo->findByUserOld($this->getUser(), $dateNow);
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $query = $em->createQuery(
+            'SELECT a FROM BoardBundle:Ad a WHERE a.owner = :user AND a.expirationDate < :nowTime ORDER BY a.creationDate DESC'
+        );
+        $query->setParameter('user', $user);
+        $query->setParameter('nowTime', $dateNow);
+
+
         //orderedBy creationDate DESC
         //@TODO: albo opcja order by expirationDate
 
-        return ['ads' => $myAds ];
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Ad:oldAds.html.twig', array('pagination' => $pagination));
     }
 
 

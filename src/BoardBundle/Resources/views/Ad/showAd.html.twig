@@ -2,14 +2,26 @@
 
 {% block body %}
 
+<div class="middle">
+
     <h1>{{ ad.title }}</h1>
+    {% if ad.owner.id == app.user.id %}
+    <a href="{{ path('modifyAd', {'id': ad.id}) }}">Edytuj</a>&nbsp;
+    <a href="{{ path('removeAd', {'id': ad.id}) }}">Usuń</a>
+    {% endif %}
 
-    <a href="{{ path('modifyAd', {'id': ad.id}) }}">Edytuj</a>
-    <a href="{{ path('removeAd', {'id': ad.id}) }}" class="glyphicon glyphicon-trash"></a>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td class="col-md-6"><img width="450px" src="{{ asset('photos/'~ ad.photoPath) }}"
+                                          class="thumbnail"/><br></td>
+                <td class="col-md-6"><b>Opis: </b> {{ ad.description }}</td>
 
-    <img width="300px" src="{{ asset('photos/'~ ad.photoPath) }}" class="thumbnail"/><br>
+            </tr>
 
-    <b>Opis: </b> {{ ad.description }}
+        </table>
+    </div>
+
     <br>
     <hr>
     <br>
@@ -28,5 +40,6 @@
             <a href="{{ path('removeComment', { 'id': comment.id }) }}">Usuń</a>
         </p>
     {% endfor %}
+</div>
 
 {% endblock %}

@@ -14,40 +14,40 @@
 </head>
 <body>
 
-{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-Zalogowany jako: {{ app.user.username | capitalize }}
-{% endif %}
-
-
 <div class="container">
-
-
-    <ul class="nav nav-tabs">
-        <li role="presentation"><a href="{{ path('showAllAds') }}"><b>WSZYTKIE OGLOSZENIA</b></a></li>
-        <li role="presentation"><a href="{{ path('showAllCategories') }}"><b>WSZYSTKIE KATEGORIE</b></a></li>
-        <li role="presentation"><a href="{{ path('showAllMyActiveAds') }}"><b>TWOJE OGLOSZENIA</b></a></li>
-        {% block access %}
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li role="presentation"><a href="{{ path('fos_user_security_logout') }}"><b>WYLOGUJ</b></a></li>
-            {% else %}
-                <li role="presentation"><a href="{{ path('fos_user_security_login') }}">Logowanie</a></li>
-            {% endif %}
-        {% endblock %}
-    </ul>
-    {#TODO: dodanie menu pokaż profil#}
+    {% block nav %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <p class="navbar-text navbar-right">Zalogowany jako: {{ app.user.username | capitalize }} &nbsp;</p>
+        {% endif %}
 
 
 
+        <div class="navbar-left">
+            <ul class="nav nav-tabs">
 
-    {% block body %}{% block all %}{% block edit %}{% endblock %}{% endblock %}{% endblock %}
-    {% block javascripts %}{% endblock %}
+                <li role="presentation"><a href="{{ path('showAllAds') }}"><b>OGLOSZENIA</b></a></li>
+                <li role="presentation"><a href="{{ path('showAllCategories') }}"><b>KATEGORIE</b></a></li>
+
+                {% block access %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('showProfile') }}"><b>PROFIL</b></a></li>
+                        {% block profile %}{% endblock %}
+                        <li role="presentation"><a href="{{ path('showAllMyActiveAds') }}"><b>TWOJE OGLOSZENIA</b></a>
+                        </li>
+                        <li role="presentation"><a href="{{ path('fos_user_security_logout') }}"><b>WYLOGUJ</b></a></li>
+                    {% else %}
+                        <li role="presentation"><a href="{{ path('fos_user_security_login') }}"><b>LOGOWANIE</b></a></li>
+                    {% endif %}
+
+                {% endblock %}
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+
     {% block footer %}
-
-
-        <hr>
-
-
-
 
     {% endblock %}
 </div>

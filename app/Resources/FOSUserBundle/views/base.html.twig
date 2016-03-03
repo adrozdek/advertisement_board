@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-            <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+</head>
+<body>
+
+<div class="container">
+    {% block nav %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <p class="navbar-text navbar-right">Zalogowany jako: {{ app.user.username | capitalize }} &nbsp;</p>
+        {% endif %}
+
+
+
+        <div class="navbar-left">
+            <ul class="nav nav-tabs">
+
+                <li role="presentation"><a href="{{ path('showAllAds') }}"><b>OGLOSZENIA</b></a></li>
+                <li role="presentation"><a href="{{ path('showAllCategories') }}"><b>KATEGORIE</b></a></li>
+
+                {% block access %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('showProfile') }}"><b>PROFIL</b></a></li>
+                        {% block profile %}{% endblock %}
+                        <li role="presentation"><a href="{{ path('showAllMyActiveAds') }}"><b>TWOJE OGLOSZENIA</b></a>
+                        </li>
+                        <li role="presentation"><a href="{{ path('fos_user_security_logout') }}"><b>WYLOGUJ</b></a></li>
+                    {% else %}
+                        {% block login %}
+                            <li role="presentation"><a href="{{ path('fos_user_security_login') }}"><b>LOGOWANIE</b></a></li>
+                        {% endblock %}
+                    {% endif %}
+
+                {% endblock %}
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}
+</div>
+</body>
 </html>
+

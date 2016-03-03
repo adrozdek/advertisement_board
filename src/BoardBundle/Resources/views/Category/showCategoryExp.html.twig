@@ -4,8 +4,10 @@
 
 {% block body %}
     <h1>Kategoria: {{ category.name | upper }}</h1>
+    <div class="middle">
 
-    <a href='{{ path('showCategory', {'id': category.id }) }}'>Od najnowszego</a>
+        Sortuj: <a href='{{ path('showCategory', {'id': category.id }) }}'>Od najnowszego</a>
+    </div>
 
     <div class="table-responsive">
         <table class="table">

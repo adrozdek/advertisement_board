@@ -4,16 +4,46 @@
 
 {% block body %}
 
-    <h1>Twoje aktywne ogłoszenia:</h1>
-    <div class="table-responsive">
+    <div class="middle lower">
         <table class="table">
+            <tr>
 
-            {% for ad in ads %}
+                <th class="col-md-6"><a href="{{ path('createAd') }}">Dodaj ogłoszenie</a></th>
+                <th class="col-md-6"><a href="{{ path('showMyOldAds') }}">Zobacz swoje stare ogłoszenia:</a></th>
+
+
+            </tr>
+            </table>
+
+    </div>
+
+
+
+    <h1>Twoje aktywne ogłoszenia:</h1>
+
+    <div class="table-responsive">
+
+        {# total items count #}
+        <div class="count">
+            <h4>Ilość ogłoszeń: {{ pagination.getTotalItemCount }}</h4>
+        </div>
+        <table class="table">
+            <tr>
+                {# sorting of properties based on query components #}
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Zdjęcie', 'a.id') }}</th>
+                <th class="col-md-2"{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tytuł', 'a.title') }}</th>
+                <th class="col-md-8">{{ knp_pagination_sortable(pagination, 'Opis', ['a.date', 'a.time']) }}</th>
+            </tr>
+
+            {% for ad in pagination %}
 
                 {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'ad': ad} %}
-
             {% endfor %}
         </table>
+        {# display navigation #}
+        <div class="navigation middle">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     </div>
 
 {% endblock %}

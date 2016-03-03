@@ -5,8 +5,10 @@
 {% block body %}
     <h1>Kategoria: {{ category.name | upper }}</h1>
 
+    <div class="middle">
+        Sortuj: <a href='{{ path('showCategoryExpiration', {'id': category.id }) }}'>Od najbliższej daty wygaśnięcia</a>
 
-    <a href='{{ path('showCategoryExpiration', {'id': category.id }) }}'>Od najkrótszego czasu do wygaśnięcia</a> &nbsp;
+    </div>
 
     <div class="table-responsive">
         <table class="table">
@@ -16,13 +18,13 @@
                 <td>Tytuł</td>
                 <td>Opis</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                <td>Właściciel</td>
+                    <td>Właściciel</td>
                 {% endif %}
             </tr>
 
             {% for ad in ads %}
 
-               {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'id' : ad.id } %}
+                {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'id' : ad.id } %}
 
             {% endfor %}
 
