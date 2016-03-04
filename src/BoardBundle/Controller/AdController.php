@@ -118,7 +118,7 @@ class AdController extends Controller
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        if ($ad->getOwner() == $user) {
+        if ($ad->getOwner() == $user || $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
 
             $adForm = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
 
@@ -140,7 +140,7 @@ class AdController extends Controller
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        if ($ad->getOwner() == $user) {
+        if ($ad->getOwner() == $user || $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $oldPath = $ad->getPhotoPath();
 
             $form = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
@@ -170,7 +170,7 @@ class AdController extends Controller
 
                     // Update the 'brochure' property to store the PDF file name
                     // instead of its contents
-                    $ad->setPhotoPath($fileName);
+
                 } else {
                     $ad->setPhotoPath($oldPath);
                 }
@@ -201,7 +201,7 @@ class AdController extends Controller
         $ad = $repo->find($id);
 
         $user = $this->getUser();
-        if ($ad->getOwner() == $user) {
+        if ($ad->getOwner() == $user || $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $photoPath = $ad->getPhotoPath();
 
             if ($photoPath != null && $photoPath > 0) {
@@ -272,7 +272,7 @@ class AdController extends Controller
         );
 
         // parameters to template
-        return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination));
+        return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination, 'dateNow' => $dateNow));
 
     }
 
@@ -302,7 +302,7 @@ class AdController extends Controller
         );
 
         // parameters to template
-        return $this->render('BoardBundle:Ad:myAds.html.twig', array('pagination' => $pagination));
+        return $this->render('BoardBundle:Ad:myAds.html.twig', array('pagination' => $pagination, 'dateNow' => $dateNow));
 
     }
 
@@ -332,23 +332,23 @@ class AdController extends Controller
         );
 
         // parameters to template
-        return $this->render('BoardBundle:Ad:oldAds.html.twig', array('pagination' => $pagination));
+        return $this->render('BoardBundle:Ad:oldAds.html.twig', array('pagination' => $pagination, 'dateNow' => $dateNow));
     }
 
     /**
      * @Route("/search", name = "searchPost" )
-     * @Method("POST")
+     * @Method("GET")
      */
     public function searchPostAction(Request $request)
     {
-        $search = $request->request->get('name');
+        $search = $request->query->get('name');
         $em = $this->get('doctrine.orm.entity_manager');
         date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
 
         $query = $em->createQuery(
-            'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime AND a.title LIKE :search ORDER BY a.creationDate DESC'
+            'SELECT a, v.username FROM BoardBundle:Ad a JOIN a.owner v WHERE a.expirationDate > :nowTime AND a.title LIKE :search'
         );
         $query->setParameter('search', '%' . $search . '%');
         $query->setParameter('nowTime', $dateNow);
@@ -361,7 +361,7 @@ class AdController extends Controller
         );
 
         // parameters to template
-        return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination, 'no' => 'no'));
+        return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination, 'no' => 'no', 'dateNow' => $dateNow));
 
     }
 

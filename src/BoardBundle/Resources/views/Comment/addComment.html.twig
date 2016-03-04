@@ -1,7 +1,14 @@
+    {#{{ form_start(form) }}#}
+    {#{{ form_widget(form) }}#}
+    {#{{ form_end(form) }}#}
 
 
-   {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+<form name=my_form method=post>
+<textarea onKeyPress=check_length(this.form); onKeyDown=check_length(this.form);
+          name=my_text rows=4 cols=30></textarea>
+    <br>
+    <input size=1 value=100 name=text_num> Characters Left
+    <input>
+</form>
 
 

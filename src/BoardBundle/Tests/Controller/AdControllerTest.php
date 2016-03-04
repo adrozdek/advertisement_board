@@ -48,4 +48,22 @@ class AdControllerTest extends WebTestCase
 
         $this->assertNotEmpty($query);
     }
+
+    public function testQuerySearch() {
+        $client = static::createClient();
+        $em = $client->getKernel()->getContainer()->get('doctrine.orm.entity_manager');
+
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+        $search = 'Oddam';
+
+        $query = $em->createQuery(
+            'SELECT a, v.username FROM BoardBundle:Ad a JOIN a.owner v WHERE a.expirationDate > :nowTime AND a.title LIKE :search'
+        );
+        $query->setParameter('search', '%' . $search . '%');
+        $query->setParameter('nowTime', $dateNow);
+        $result = $query->execute();
+
+
+    }
 }

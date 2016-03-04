@@ -106,10 +106,12 @@ class CommentController extends Controller
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Comment');
         $comment = $repo->find($id);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($comment);
-        $em->flush();
+        if($comment->getCommentOwner() == $this->getUser() || $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
 
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($comment);
+            $em->flush();
+        }
         //@TODO: redirect to previous watching page
 
         return $this->redirectToRoute('showAllMyActiveAds');

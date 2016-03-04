@@ -21,6 +21,16 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\Column( type="string")
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column( type = "integer")
+     */
+    protected $phone;
+
+    /**
      * @ORM\OneToMany( targetEntity = "Ad", mappedBy ="owner")
      */
     protected $ads;
@@ -102,4 +112,50 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 }

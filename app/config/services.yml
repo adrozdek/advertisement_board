@@ -7,3 +7,14 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+     app.twig.extension.date:
+            class: Twig_Extensions_Extension_Date
+            public: false
+            tags:
+                - { name: twig.extension }
+
+     app.form.registration:
+            class: BoardBundle\Form\RegistrationType
+            tags:
+                - { name: form.type, alias: app_user_registration }
