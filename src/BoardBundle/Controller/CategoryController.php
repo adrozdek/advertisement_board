@@ -60,19 +60,30 @@ class CategoryController extends Controller
 
     /**
      * @Route("/allCategories", name = "showAllCategories" )
-     * @Template()
+     *
      */
-    public function allCategoriesAction()
+    public function allCategoriesAction(Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository('BoardBundle:Category');
-        $categories = $repo->findCategoriesOrderByName();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $query = $em->createQuery(
+            'SELECT c FROM BoardBundle:Category c ORDER BY c.name ASC'
+        );
 
-        return ['categories' => $categories];
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            20/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('BoardBundle:Category:allCategories.html.twig', array('pagination' => $pagination));
+
     }
 
     /**
      * @Route("/showCategory/{id}", name = "showCategory")
-     * @Template()
+     *
      */
     public function showCategoryAction(Request $request, $id)
     {
@@ -98,7 +109,7 @@ class CategoryController extends Controller
         return $this->render('BoardBundle:Category:showCategory.html.twig', array('category' => $category, 'pagination' => $pagination));
 
     }
-    
+
     /**
      * @Route("/admin/removeCategory/{id}", name = "removeCategory")
      *

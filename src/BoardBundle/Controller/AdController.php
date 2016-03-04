@@ -113,12 +113,18 @@ class AdController extends Controller
      */
     public function modifyAdAction($id)
     {
+        $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        $adForm = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
+        if($ad->getOwner() == $user) {
 
-        return ['form' => $adForm->createView()];
+            $adForm = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
+
+            return ['form' => $adForm->createView()];
+        } else {
+            return $this->redirectToRoute('showAllAds');
+        }
     }
 
     /**
@@ -129,55 +135,59 @@ class AdController extends Controller
      */
     public function modifyAdPostAction(Request $req, $id)
     {
+        $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        $oldPath = $ad->getPhotoPath();
+        if($ad->getOwner() == $user) {
+            $oldPath = $ad->getPhotoPath();
 
-        $form = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
-        $form->handleRequest($req);
+            $form = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
+            $form->handleRequest($req);
 
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->isSubmitted() && $form->isValid()) {
 
-            if ($ad->getPhotoPath() != null) {
+                if ($ad->getPhotoPath() != null) {
 
-                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-                $file = $ad->getPhotoPath();
+                    /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+                    $file = $ad->getPhotoPath();
 
-                if ($file != null) {
-                    if ($oldPath != null && strlen($oldPath) > 0) {
-                        $path = $this->container->getParameter('kernel.root_dir') . '/../web/photos/' . $oldPath;
-                        unlink($path);
+                    if ($file != null) {
+                        if ($oldPath != null && strlen($oldPath) > 0) {
+                            $path = $this->container->getParameter('kernel.root_dir') . '/../web/photos/' . $oldPath;
+                            unlink($path);
+                        }
                     }
+
+                    // Generate a unique name for the file before saving it
+                    $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    $photoDir = $this->container->getParameter('kernel.root_dir') . '/../web/photos';
+                    $file->move($photoDir, $fileName);
+
+                    // Update the 'brochure' property to store the PDF file name
+                    // instead of its contents
+                    $ad->setPhotoPath($fileName);
+                } else {
+                    $ad->setPhotoPath($oldPath);
                 }
 
-                // Generate a unique name for the file before saving it
-                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                $user = $this->getUser();
 
-                // Move the file to the directory where brochures are stored
-                $photoDir = $this->container->getParameter('kernel.root_dir') . '/../web/photos';
-                $file->move($photoDir, $fileName);
+                $ad->setOwner($user);
+                $user->addAd($ad);
 
-                // Update the 'brochure' property to store the PDF file name
-                // instead of its contents
-                $ad->setPhotoPath($fileName);
-            } else {
-                $ad->setPhotoPath($oldPath);
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+
+                $id = $ad->getId();
             }
-
-            $user = $this->getUser();
-
-            $ad->setOwner($user);
-            $user->addAd($ad);
-
-            $em = $this->getDoctrine()->getManager();
-
-            $em->flush();
-
-            $id = $ad->getId();
+            return $this->redirectToRoute('showAd', ['id' => $id]);
         }
-        return $this->redirectToRoute('showAd', ['id' => $id]);
+        return $this->redirectToRoute('showAllAds');
     }
 
     /**
@@ -188,16 +198,19 @@ class AdController extends Controller
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        $photoPath = $ad->getPhotoPath();
+        $user = $this->getUser();
+        if($ad->getOwner() == $user) {
+            $photoPath = $ad->getPhotoPath();
 
-        if ($photoPath != null && $photoPath > 0) {
-            $path = $this->container->getParameter('kernel.root_dir') . '/../web/photos/' . $photoPath;
-            unlink($path);
+            if ($photoPath != null && $photoPath > 0) {
+                $path = $this->container->getParameter('kernel.root_dir') . '/../web/photos/' . $photoPath;
+                unlink($path);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($ad);
+            $em->flush();
         }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($ad);
-        $em->flush();
 
         return $this->redirectToRoute('showAllMyActiveAds');
     }
@@ -234,35 +247,11 @@ class AdController extends Controller
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
+            2/*limit per page*/
         );
 
         // parameters to template
         return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination));
-
-    }
-    /**
-     * @Route("/allAdsExp", name = "showAllAdsExp")
-     *
-     */
-    public function allAdsExpirationAction(Request $request)
-    {
-        $date = date('Y-m-d H:i:s', time());
-        $dateNow = (new \DateTime($date));
-        $em    = $this->get('doctrine.orm.entity_manager');
-        $query = $em->createQuery(
-            'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime ORDER BY a.expirationDate ASC');
-        $query->setParameter('nowTime', $dateNow);
-
-        $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
-        );
-
-        // parameters to template
-        return $this->render('BoardBundle:Ad:allAdsExp.html.twig', array('pagination' => $pagination));
 
     }
 
@@ -276,8 +265,6 @@ class AdController extends Controller
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
         $user = $this->getUser();
-        //orderedBy creationDate DESC
-        //@TODO: albo opcja order by expirationDate
 
         $em    = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery(
@@ -295,7 +282,6 @@ class AdController extends Controller
 
         // parameters to template
         return $this->render('BoardBundle:Ad:myAds.html.twig', array('pagination' => $pagination));
-
 
     }
 
@@ -316,11 +302,7 @@ class AdController extends Controller
         );
         $query->setParameter('user', $user);
         $query->setParameter('nowTime', $dateNow);
-
-
-        //orderedBy creationDate DESC
-        //@TODO: albo opcja order by expirationDate
-
+        
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
