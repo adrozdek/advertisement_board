@@ -21,9 +21,8 @@
             <tr class="no">
                 {# sorting of properties based on query components #}
                 <th class="col-md-4"{% if pagination.isSorted('c.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nazwa', 'c.name') }}<i class="fa fa-sort"></i></th>
-                <th class="col-md-3">{{ knp_pagination_sortable(pagination, 'Liczba ogłoszeń', 'cnt') }}</th>
-                {#TODO: #}
-                {#<th class="col-md-3">Ilość ogłoszeń <i class="fa fa-sort"></i> </th>#}
+                <th class="col-md-3" id="sortByAdsCount">{{ knp_pagination_sortable(pagination, 'Liczba ogłoszeń', 'ent') }}<i class="fa fa-sort"></i></th>
+
 
                 {% if is_granted('ROLE_ADMIN') %}
                     <th><b>Usuń</b></th>
@@ -31,11 +30,12 @@
 
             </tr>
 
-            {% for category in pagination %}
+            {% for row in pagination %}
+                {% set category = row.0 %}
 
                 <tr>
                     <td><a href="{{ path('showCategory', {'id': category.id }) }}">{{ category.name }}</a></td>
-                    <td>{{ category.ads | length }}</td>
+                    <td>{{ row.ent }}</td>
                     {% if is_granted('ROLE_ADMIN') %}
                         <td><a href="{{ path('removeCategory', {'id': category.id }) }}"
                                class="glyphicon glyphicon-trash"></a></td>

@@ -302,7 +302,7 @@ class AdController extends Controller
         );
         $query->setParameter('user', $user);
         $query->setParameter('nowTime', $dateNow);
-        
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */

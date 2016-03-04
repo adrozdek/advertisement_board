@@ -66,7 +66,7 @@ class CategoryController extends Controller
     {
         $em    = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery(
-            'SELECT c FROM BoardBundle:Category c ORDER BY c.name ASC'
+            'SELECT c, COUNT(v.id) AS ent FROM BoardBundle:Category c LEFT JOIN c.ads v GROUP BY c.id ORDER BY c.name ASC'
         );
 
         $paginator  = $this->get('knp_paginator');

@@ -18,6 +18,9 @@ class AdControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/allAds');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), 'Main page should work');
+        $this->assertContains('Ogłoszenia', $client->getResponse()->getContent(), 'Main page should containg header Ogłoszenia');
     }
 
     public function testMyads()
