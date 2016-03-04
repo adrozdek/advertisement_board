@@ -38,10 +38,10 @@ td a{
 
 .no:hover {background-color: white}
 
-.smaller {
-    width: 600px;
-    text-align: center;
-}
+/*.smaller {*/
+    /*width: 800px;*/
+    /*text-align: center;*/
+/*}*/
 
 .nav {
     display: inline-block !important;

@@ -1,13 +1,17 @@
 
 <tr>
+    <td class="col-md-1"></td>
     <td  class="col-md-1"><img width="150px" src="{{ asset('photos/'~ ad.photoPath) }}" class="thumbnail"/></td>
-    <td  class="col-md-4"><a href="{{ path('showAd', {'id': ad.id }) }}">{{ ad.title }}</a></td>
+    <td  class="col-md-2"><a href="{{ path('showAd', {'id': ad.id }) }}">{{ ad.title }}</a></td>
     <td  class="col-md-3">{{ ad.description[0:150] }}{% if ad.description | length > 150 %}...{% endif %}</td>
-    <td class="col-md-2">{{ ad.expirationDate |date('Y-m-d H:i:s') }}</td>
-    <td class="col-md-2">{{ ad.creationDate |date('Y-m-d H:i:s') }}</td>
+    <td class="col-md-1">{{ ad.expirationDate |date('Y-m-d H:i:s') }}</td>
+    <td class="col-md-1">{{ ad.creationDate |date('Y-m-d H:i:s') }}</td>
+    <td class="col-md-1">{{ ad.viewCount }}</td>
+
     {% if is_granted('ROLE_ADMIN') %}
         <td>{{ ad.owner.username | capitalize }}</td>
     {% endif %}
+    <td class="col-md-1"></td>
 
 
 

@@ -3,6 +3,7 @@
 namespace BoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ad
@@ -39,6 +40,7 @@ class Ad
      * @var string
      *
      * @ORM\Column(name="photoPath", type="string", length=255)
+     * @Assert\File()
      */
     private $photoPath;
 
@@ -48,6 +50,11 @@ class Ad
      * @ORM\Column(name="expirationDate", type="datetime")
      */
     private $expirationDate;
+
+    /**
+     * @ORM\Column( name = "viewCount",  type = "integer")
+     */
+    private $viewCount;
 
 
     /**
@@ -269,5 +276,28 @@ class Ad
     public function getAdComments()
     {
         return $this->adComments;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Ad
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
     }
 }

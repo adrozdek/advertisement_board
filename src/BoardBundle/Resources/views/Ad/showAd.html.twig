@@ -25,15 +25,20 @@
 
         <div class="table-responsive">
             <table class="table">
-                <tr>
-                    <td class="col-md-6"><img width="450px" src="{{ asset('photos/'~ ad.photoPath) }}"
+                <tr class="no">
+                    <td class="col-md-1"></td>
+                    <td class="col-md-5"><img width="450px" src="{{ asset('photos/'~ ad.photoPath) }}"
                                               class="thumbnail"/><br></td>
-                    <td class="col-md-6"><b>Opis: </b> {{ ad.description }}</td>
+                    <td class="col-md-5"><b>Opis: </b> {{ ad.description }}</td>
+                    <td class="col-md-1"></td>
 
                 </tr>
-                <tr>
-                    <td class="col-md-6">Data utworzenia: {{ ad.creationDate | date('Y-m-d H:i:s') }}</td>
-                    <td class="col-md-6">Data wygaśnięcia: {{ ad.expirationDate | date('Y-m-d H:i:s') }}</td>
+                <tr class="no">
+                    <td class="col-md-1"></td>
+                    <td class="col-md-3">Data utworzenia: {{ ad.creationDate | date('Y-m-d H:i:s') }}</td>
+                    <td class="col-md-3">Data wygaśnięcia: {{ ad.expirationDate | date('Y-m-d H:i:s') }}</td>
+                    <td class="col-md-3">Wyświetlenia: {{ ad.viewCount }}</td>
+                    <td class="col-md-1"></td>
                 </tr>
 
             </table>

@@ -51,6 +51,11 @@ class Ad
      */
     private $expirationDate;
 
+    /**
+     * @ORM\Column( name = "viewCount",  type = "integer")
+     */
+    private $viewCount;
+
 
     /**
      * @ORM\ManyToOne( targetEntity = "User", inversedBy = "ads" )
@@ -294,5 +299,28 @@ class Ad
     public function getCreationDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * Set viewCount
+     *
+     * @param integer $viewCount
+     * @return Ad
+     */
+    public function setViewCount($viewCount)
+    {
+        $this->viewCount = $viewCount;
+
+        return $this;
+    }
+
+    /**
+     * Get viewCount
+     *
+     * @return integer 
+     */
+    public function getViewCount()
+    {
+        return $this->viewCount;
     }
 }

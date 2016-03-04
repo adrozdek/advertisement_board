@@ -17,16 +17,19 @@
         <table class="table">
             <tr class="no">
                 {# sorting of properties based on query components #}
+                <th class="col-md-1"></th>
                 <th class="col-md-1">Zdjęcie</th>
-                <th class="col-md-4"{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tytuł', 'a.title') }}<i class="fa fa-sort"></i></th>
+                <th class="col-md-2"{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tytuł', 'a.title') }}<i class="fa fa-sort"></i></th>
                 <th class="col-md-3">{{ knp_pagination_sortable(pagination, 'Opis', 'a.description') }}<i class="fa fa-sort"></i></th>
-                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Data wygaśnięcia', 'a.expirationDate') }}<i class="fa fa-sort"></i></th>
-                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Data dodania', 'a.creationDate') }}<i class="fa fa-sort"></i></th>
+                <th class="col-md-1">{{ knp_pagination_sortable(pagination, 'Data wygaśnięcia', 'a.expirationDate') }}<i class="fa fa-sort"></i></th>
+                <th class="col-md-1">{{ knp_pagination_sortable(pagination, 'Data dodania', 'a.creationDate') }}<i class="fa fa-sort"></i></th>
+                <th class="col-md-1">{{ knp_pagination_sortable(pagination, 'Wyświetlenia', 'a.viewCount') }}<i class="fa fa-sort"></i></th>
+
                 {% if is_granted('ROLE_ADMIN') %}
                     <th>{{ knp_pagination_sortable(pagination, 'Uzytkownik', 'a.owner.userName') }}</th>
                     {#TODO: sorting by username#}
                 {% endif %}
-
+                <th class="col-md-1"></th>
             </tr>
 
             {% for ad in pagination %}

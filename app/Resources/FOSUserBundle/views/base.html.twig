@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
     {% block nav %}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <p class="navbar-text navbar-right">Zalogowany jako: {{ app.user.username | capitalize }} &nbsp;</p>

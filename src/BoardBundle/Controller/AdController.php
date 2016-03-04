@@ -21,7 +21,7 @@ class AdController extends Controller
         $form->add('description', 'textarea', ['trim' => true]);
         $form->add('photoPath', 'file', ['data_class' => null, 'required' => false]);
         $form->add('expirationDate', 'datetime',
-            ['years' => range(date('Y') +1, date('Y'))]);
+            ['years' => range(date('Y') + 1, date('Y'))]);
         $form->add('categories', 'entity', [
             'class' => 'BoardBundle\Entity\Category',
             'property' => 'name',
@@ -85,6 +85,7 @@ class AdController extends Controller
 
             $ad->setOwner($user);
             $user->addAd($ad);
+            $ad->setViewCount(0);
 
             date_default_timezone_set("Europe/Warsaw");
             $date = date('Y-m-d H:i:s', time());
@@ -117,7 +118,7 @@ class AdController extends Controller
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        if($ad->getOwner() == $user) {
+        if ($ad->getOwner() == $user) {
 
             $adForm = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
 
@@ -139,7 +140,7 @@ class AdController extends Controller
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
-        if($ad->getOwner() == $user) {
+        if ($ad->getOwner() == $user) {
             $oldPath = $ad->getPhotoPath();
 
             $form = $this->generateAdForm($ad, $this->generateUrl('modifyAdPost', ['id' => $id]));
@@ -194,12 +195,13 @@ class AdController extends Controller
      * @Route("/removeAd/{id}", name = "removeAd")
      * @Security("has_role('ROLE_USER')")
      */
-    public function removeAdAction($id) {
+    public function removeAdAction($id)
+    {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
 
         $user = $this->getUser();
-        if($ad->getOwner() == $user) {
+        if ($ad->getOwner() == $user) {
             $photoPath = $ad->getPhotoPath();
 
             if ($photoPath != null && $photoPath > 0) {
@@ -219,13 +221,29 @@ class AdController extends Controller
     /**
      * @Route("/showAd/{id}", name = "showAd")
      */
-    public function showAdAction($id)
+    public function showAdAction(Request $request, $id)
     {
         $repo = $this->getDoctrine()->getRepository('BoardBundle:Ad');
         $ad = $repo->find($id);
         //żeby komentarze były wyświetlane od najnowszych:
         $repoComments = $this->getDoctrine()->getRepository('BoardBundle:Comment');
         $comments = $repoComments->findByCommentDate($ad);
+
+        if ($ad->getOwner() != $this->getUser()) {
+
+            $views = $ad->getViewCount();
+
+//            $session = $this->getUser()->getAttribute($id);
+            $session = $request->getSession()->get($id);
+            if($session != 'exist') {
+                $ad->setViewCount($views + 1);
+                $request->getSession()->set($id, 'exist');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            
+        }
 
         return $this->render('BoardBundle:Ad:showAd.html.twig', ['ad' => $ad, 'comments' => $comments]);
     }
@@ -238,12 +256,12 @@ class AdController extends Controller
     {
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
-        $em    = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery(
             'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime ORDER BY a.creationDate DESC');
         $query->setParameter('nowTime', $dateNow);
 
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
@@ -266,14 +284,14 @@ class AdController extends Controller
         $dateNow = (new \DateTime($date));
         $user = $this->getUser();
 
-        $em    = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery(
             'SELECT a FROM BoardBundle:Ad a WHERE a.owner = :user AND a.expirationDate > :nowTime ORDER BY a.creationDate DESC'
         );
         $query->setParameter('user', $user);
         $query->setParameter('nowTime', $dateNow);
 
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
@@ -296,14 +314,14 @@ class AdController extends Controller
         $dateNow = (new \DateTime($date));
         $user = $this->getUser();
 
-        $em    = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery(
             'SELECT a FROM BoardBundle:Ad a WHERE a.owner = :user AND a.expirationDate < :nowTime ORDER BY a.creationDate DESC'
         );
         $query->setParameter('user', $user);
         $query->setParameter('nowTime', $dateNow);
 
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
@@ -318,9 +336,10 @@ class AdController extends Controller
      * @Route("/search", name = "searchPost" )
      * @Method("POST")
      */
-    public function searchPostAction(Request $request) {
+    public function searchPostAction(Request $request)
+    {
         $search = $request->request->get('name');
-        $em    = $this->get('doctrine.orm.entity_manager');
+        $em = $this->get('doctrine.orm.entity_manager');
         date_default_timezone_set("Europe/Warsaw");
         $date = date('Y-m-d H:i:s', time());
         $dateNow = (new \DateTime($date));
@@ -331,7 +350,7 @@ class AdController extends Controller
         $query->setParameter('search', '%' . $search . '%');
         $query->setParameter('nowTime', $dateNow);
 
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
@@ -342,8 +361,6 @@ class AdController extends Controller
         return $this->render('BoardBundle:Ad:allAds.html.twig', array('pagination' => $pagination, 'no' => 'no'));
 
     }
-
-
 
 
 }
