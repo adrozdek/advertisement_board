@@ -37,4 +37,15 @@ class AdControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/oldAds');
     }
 
+    public function testQueryAllAds() {
+        $client = static::createClient();
+        $em = $client->getKernel()->getContainer()->get('doctrine.orm.entity_manager');
+        $date = date('Y-m-d H:i:s', time());
+        $dateNow = (new \DateTime($date));
+        $query = $em->createQuery(
+            'SELECT a, v.username FROM BoardBundle:Ad a LEFT JOIN a.owner v WHERE a.expirationDate > :nowTime');
+        $result = $query->setParameter('nowTime', $dateNow)->execute();
+
+        $this->assertNotEmpty($query);
+    }
 }

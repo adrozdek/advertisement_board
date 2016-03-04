@@ -26,7 +26,7 @@
                 <th class="col-md-1">{{ knp_pagination_sortable(pagination, 'Wyświetlenia', 'a.viewCount') }}<i class="fa fa-sort"></i></th>
 
                 {% if is_granted('ROLE_ADMIN') %}
-                    <th>{{ knp_pagination_sortable(pagination, 'Uzytkownik', 'a.owner.userName') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Uzytkownik', 'v.username') }}<i class="fa fa-sort"></i></th>
                     {#TODO: sorting by username#}
                 {% endif %}
                 <th class="col-md-1"></th>
@@ -34,7 +34,8 @@
 
             {% for ad in pagination %}
 
-                {% include 'BoardBundle:Ad:showAdShort.html.twig' with {'ad': ad} %}
+
+                {% include 'BoardBundle:Ad:showAdShort.html.twig' with { 'ad': ad.0 } %}
 
             {% endfor %}
         </table>

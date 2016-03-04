@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7f1f3c78-27f5-45f5-95b6-f5b8fcf58551" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Entity/Ad.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Entity/Ad.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig" afterPath="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/bootstrap.css" afterPath="$PROJECT_DIR$/web/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/mystyle.css" afterPath="$PROJECT_DIR$/web/css/mystyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php" afterPath="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php" />
     </list>
     <ignored path="last_workshop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.87831515">
-              <caret line="244" column="12" selection-start-line="244" selection-start-column="12" selection-end-line="244" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
               <folding>
                 <element signature="e#42#68#0#PHP" expanded="true" />
                 <element signature="e#3376#3411#0#PHP" expanded="true" />
@@ -52,26 +45,40 @@
                 <element signature="e#6649#6665#1#PHP" expanded="true" />
                 <element signature="e#7399#7415#1#PHP" expanded="true" />
                 <element signature="e#7569#7590#1#PHP" expanded="true" />
-                <element signature="e#8159#8192#0#PHP" expanded="true" />
-                <element signature="e#9017#9050#0#PHP" expanded="true" />
-                <element signature="e#10082#10114#0#PHP" expanded="true" />
-                <element signature="e#11136#11169#0#PHP" expanded="true" />
-                <element signature="e#12210#12243#0#PHP" expanded="true" />
-                <marker date="1457092232669" expanded="true" signature="8561:8654" placeholder="SELECT a FRO... BoardBundle" />
-                <marker date="1457092232669" expanded="true" signature="9551:9664" placeholder="SELECT a FRO... BoardBundle" />
-                <marker date="1457092232669" expanded="true" signature="10605:10718" placeholder="SELECT a FRO... BoardBundle" />
-                <marker date="1457092232669" expanded="true" signature="11658:11776" placeholder="SELECT a FRO... BoardBundle" />
+                <element signature="e#8214#8247#0#PHP" expanded="true" />
+                <element signature="e#9072#9105#0#PHP" expanded="true" />
+                <element signature="e#10137#10169#0#PHP" expanded="true" />
+                <element signature="e#11191#11224#0#PHP" expanded="true" />
+                <element signature="e#12265#12298#0#PHP" expanded="true" />
+                <marker date="1457095592326" expanded="true" signature="8616:8707" placeholder="SELECT a, v.... BoardBundle" />
+                <marker date="1457095592326" expanded="true" signature="9606:9719" placeholder="SELECT a FRO... BoardBundle" />
+                <marker date="1457095592326" expanded="true" signature="10660:10773" placeholder="SELECT a FRO... BoardBundle" />
+                <marker date="1457095592326" expanded="true" signature="11713:11831" placeholder="SELECT a FRO... BoardBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="allAds.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
+      <file leaf-file-name="AdControllerTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-              <folding />
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding>
+                <marker date="1457095640846" expanded="true" signature="1262:1358" placeholder="SELECT a, v.... BoardBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="allAds.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3501805">
+              <caret line="28" column="119" selection-start-line="28" selection-start-column="119" selection-end-line="28" selection-end-column="119" />
+              <folding>
+                <element signature="e#1676#1712#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,17 +87,39 @@
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/allCategories.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="150" selection-start-line="23" selection-start-column="150" selection-end-line="23" selection-end-column="150" />
+              <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/bootstrap.css">
+      <file leaf-file-name="CategoryControllerTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.034483">
-              <caret line="6501" column="16" selection-start-line="6501" selection-start-column="1" selection-end-line="6501" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+              <folding>
+                <marker date="1457088311378" expanded="true" signature="1782:1890" placeholder="SELECT c, CO... BoardBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createAd.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/createAd.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createCategory.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/createCategory.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -100,20 +129,10 @@
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="42" />
+              <caret line="37" column="79" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
               <folding>
-                <element signature="e#1809#1845#0#Twig" expanded="true" />
+                <element signature="e#1805#1841#0#Twig" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mystyle.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/mystyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="2" selection-end-line="43" selection-end-column="3" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -128,31 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="showAd.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="showAdShort.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -206,8 +205,6 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/../Vagrantfile" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/allCategories.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Entity/Ad.php" />
@@ -215,12 +212,14 @@
         <option value="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/base.html.twig" />
         <option value="$PROJECT_DIR$/web/css/mystyle.css" />
         <option value="$PROJECT_DIR$/web/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig" />
-        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAd.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/oldAds.html.twig" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig" />
         <option value="$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php" />
+        <option value="$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig" />
       </list>
     </option>
   </component>
@@ -240,10 +239,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Remote PHP 5.5" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="37" />
-    <option name="y" value="325" />
+    <option name="x" value="21" />
     <option name="width" value="1902" />
-    <option name="height" value="997" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -626,11 +624,7 @@
       <recent name="C:\work\advertisement_board\web\photos" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.CategoryControllerTest.testQuery">
-    <configuration default="false" name="AdControllerTest.testAllads" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="BoardBundle\Tests\Controller\AdControllerTest" file="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php" method="testAllads" scope="Method" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.AdControllerTest.testQueryAllAds">
     <configuration default="false" name="CategoryControllerTest.testAllcategories" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="BoardBundle\Tests\Controller\CategoryControllerTest" file="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php" method="testAllcategories" scope="Method" />
       <method />
@@ -645,6 +639,10 @@
     </configuration>
     <configuration default="false" name="CategoryControllerTest.testQuery" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="BoardBundle\Tests\Controller\CategoryControllerTest" file="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php" method="testQuery" scope="Method" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AdControllerTest.testQueryAllAds" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="BoardBundle\Tests\Controller\AdControllerTest" file="$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php" method="testQueryAllAds" scope="Method" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -683,19 +681,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="PHP Web Application.vagrant" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.AdControllerTest.testAllads" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testAllcategories" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testSortCategoryByAdsAmount" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testIfSiteSort" />
-      <item index="5" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testQuery" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testAllcategories" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testSortCategoryByAdsAmount" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testIfSiteSort" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testQuery" />
+      <item index="5" class="java.lang.String" itemvalue="PHPUnit.AdControllerTest.testQueryAllAds" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testQuery" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testIfSiteSort" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testSortCategoryByAdsAmount" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testAllcategories" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.AdControllerTest.testAllads" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.AdControllerTest.testQueryAllAds" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testQuery" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testIfSiteSort" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testSortCategoryByAdsAmount" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.CategoryControllerTest.testAllcategories" />
       </list>
     </recent_temporary>
   </component>
@@ -713,39 +711,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CategoryControllerTest_testIfSiteSort - 2016.03.04 at 11h 10m 14s.xml">
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 03m 48s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 04m 18s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 05m 49s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 06m 52s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 07m 10s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 07m 22s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 07m 38s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AdControllerTest_testQueryAllAds - 2016.03.04 at 13h 16m 16s.xml">
+      <configuration name="AdControllerTest.testQueryAllAds" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CategoryControllerTest_testIfSiteSort - 2016.03.04 at 13h 32m 30s.xml">
       <configuration name="CategoryControllerTest.testIfSiteSort" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 40m 56s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 41m 21s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 41m 33s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 42m 00s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 42m 09s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 42m 37s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 43m 37s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 11h 45m 07s.xml">
-      <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="CategoryControllerTest_testQuery - 2016.03.04 at 12h 03m 21s.xml">
       <configuration name="CategoryControllerTest.testQuery" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="325" width="1902" height="997" extended-state="0" />
+    <frame x="21" y="0" width="1902" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16178067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -753,11 +751,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41244724" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4107884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22658959" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48208094" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5560694" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09388185" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -766,6 +764,25 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41156068" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48208094" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16178067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37456647" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -811,8 +828,13 @@
           <line>63</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php</url>
+          <line>46</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -994,16 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/createAd.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/FirstController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1037,14 +1049,6 @@
             <marker date="1457037668952" expanded="true" signature="706:837" placeholder="SELECT a FRO... BoardBundle" />
             <marker date="1457037668952" expanded="true" signature="1159:1291" placeholder="SELECT a FRO... BoardBundle" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/createCategory.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,14 +1103,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config_test.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1141,31 +1137,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="e#2469#2515#0#PHP" expanded="true" />
-            <element signature="e#2764#2786#1#PHP" expanded="true" />
-            <element signature="e#3602#3647#0#PHP" expanded="true" />
-            <element signature="e#3911#3933#1#PHP" expanded="true" />
-            <marker date="1457088762212" expanded="true" signature="2038:2146" placeholder="SELECT c, CO... BoardBundle" />
-            <marker date="1457088762212" expanded="true" signature="3076:3207" placeholder="SELECT a FRO... BoardBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <marker date="1457088311378" expanded="true" signature="1782:1890" placeholder="SELECT c, CO... BoardBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1190,34 +1161,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/allCategories.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="150" selection-start-line="23" selection-start-column="150" selection-end-line="23" selection-end-column="150" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1230,13 +1177,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="42" />
+          <caret line="68" column="122" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="122" />
           <folding>
-            <element signature="e#1809#1845#0#Twig" expanded="true" />
+            <element signature="e#2469#2515#0#PHP" expanded="true" />
+            <element signature="e#2764#2786#1#PHP" expanded="true" />
+            <element signature="e#3602#3647#0#PHP" expanded="true" />
+            <element signature="e#3911#3933#1#PHP" expanded="true" />
+            <marker date="1457088762212" expanded="true" signature="2038:2146" placeholder="SELECT c, CO... BoardBundle" />
+            <marker date="1457088762212" expanded="true" signature="3076:3207" placeholder="SELECT a FRO... BoardBundle" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/createCategory.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,10 +1208,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Category/allCategories.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/myAds.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="79" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
+          <folding>
+            <element signature="e#1805#1841#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/showAdShort.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/CategoryControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <marker date="1457088311378" expanded="true" signature="1782:1890" placeholder="SELECT c, CO... BoardBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Tests/Controller/AdControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <marker date="1457095640846" expanded="true" signature="1262:1358" placeholder="SELECT a, v.... BoardBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/BoardBundle/Controller/AdController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87831515">
-          <caret line="244" column="12" selection-start-line="244" selection-start-column="12" selection-end-line="244" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
           <folding>
             <element signature="e#42#68#0#PHP" expanded="true" />
             <element signature="e#3376#3411#0#PHP" expanded="true" />
@@ -1260,15 +1266,33 @@
             <element signature="e#6649#6665#1#PHP" expanded="true" />
             <element signature="e#7399#7415#1#PHP" expanded="true" />
             <element signature="e#7569#7590#1#PHP" expanded="true" />
-            <element signature="e#8159#8192#0#PHP" expanded="true" />
-            <element signature="e#9017#9050#0#PHP" expanded="true" />
-            <element signature="e#10082#10114#0#PHP" expanded="true" />
-            <element signature="e#11136#11169#0#PHP" expanded="true" />
-            <element signature="e#12210#12243#0#PHP" expanded="true" />
-            <marker date="1457092232669" expanded="true" signature="8561:8654" placeholder="SELECT a FRO... BoardBundle" />
-            <marker date="1457092232669" expanded="true" signature="9551:9664" placeholder="SELECT a FRO... BoardBundle" />
-            <marker date="1457092232669" expanded="true" signature="10605:10718" placeholder="SELECT a FRO... BoardBundle" />
-            <marker date="1457092232669" expanded="true" signature="11658:11776" placeholder="SELECT a FRO... BoardBundle" />
+            <element signature="e#8214#8247#0#PHP" expanded="true" />
+            <element signature="e#9072#9105#0#PHP" expanded="true" />
+            <element signature="e#10137#10169#0#PHP" expanded="true" />
+            <element signature="e#11191#11224#0#PHP" expanded="true" />
+            <element signature="e#12265#12298#0#PHP" expanded="true" />
+            <marker date="1457095592326" expanded="true" signature="8616:8707" placeholder="SELECT a, v.... BoardBundle" />
+            <marker date="1457095592326" expanded="true" signature="9606:9719" placeholder="SELECT a FRO... BoardBundle" />
+            <marker date="1457095592326" expanded="true" signature="10660:10773" placeholder="SELECT a FRO... BoardBundle" />
+            <marker date="1457095592326" expanded="true" signature="11713:11831" placeholder="SELECT a FRO... BoardBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/createAd.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BoardBundle/Resources/views/Ad/allAds.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3501805">
+          <caret line="28" column="119" selection-start-line="28" selection-start-column="119" selection-end-line="28" selection-end-column="119" />
+          <folding>
+            <element signature="e#1676#1712#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>

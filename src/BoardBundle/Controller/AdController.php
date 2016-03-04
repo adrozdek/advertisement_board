@@ -234,6 +234,8 @@ class AdController extends Controller
             $views = $ad->getViewCount();
 
 //            $session = $this->getUser()->getAttribute($id);
+            //możliwe dostanie się do sesji poprzez obiekt usera.
+
             $session = $request->getSession()->get($id);
             if($session != 'exist') {
                 $ad->setViewCount($views + 1);
@@ -242,7 +244,7 @@ class AdController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            
+
         }
 
         return $this->render('BoardBundle:Ad:showAd.html.twig', ['ad' => $ad, 'comments' => $comments]);
@@ -258,14 +260,15 @@ class AdController extends Controller
         $dateNow = (new \DateTime($date));
         $em = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery(
-            'SELECT a FROM BoardBundle:Ad a WHERE a.expirationDate > :nowTime ORDER BY a.creationDate DESC');
+            'SELECT a, v.username FROM BoardBundle:Ad a JOIN a.owner v WHERE a.expirationDate > :nowTime');
         $query->setParameter('nowTime', $dateNow);
+
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            2/*limit per page*/
+            10/*limit per page*/
         );
 
         // parameters to template

@@ -26,7 +26,7 @@
             <h4>Ilość ogłoszeń: {{ pagination.getTotalItemCount }}</h4>
         </div>
         <table class="table">
-            <tr>
+            <tr class="no">
                 <th class="col-md-1"></th>
                 <th class="col-md-1">Zdjęcie</th>
                 <th class="col-md-2"{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Tytuł', 'a.title') }}</th>
@@ -35,7 +35,7 @@
                 <th class="col-md-1">{{ knp_pagination_sortable(pagination, 'Data dodania', 'a.creationDate') }}</th>
                 <th class="col-md-1">{{ knp_pagination_sortable(pagination, 'Wyświetlenia', 'a.viewCount') }}</th>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <th>{{ knp_pagination_sortable(pagination, 'Uzytkownik', 'a.owner.userName') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Uzytkownik', 'v') }}</th>
                     {#TODO: sorting by username#}
                 {% endif %}
                 <th class="col-md-1"></th>
